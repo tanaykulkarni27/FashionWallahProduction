@@ -45,7 +45,7 @@ export function SortFilter({
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div className="flex items-center justify-between w-full z-40">
+      <div className="flex items-center justify-between w-full z-30">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className={
