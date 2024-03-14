@@ -39,6 +39,7 @@ import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {ProductItem} from '~/components/ProductItem';
 
 import HorizontalCarousel from '~/components/hozizontalCarousel/HorizontalCarousel';
+import ShortProduct from '~/components/ShortProduct';
 
 export const headers = routeHeaders;
 
@@ -192,6 +193,12 @@ export default function Product() {
                     learnMore={`/policies/${refundPolicy.handle}`}
                   />
                 )}
+                {/* COMPLETE LOOK PART */}
+                <div className='flex flex-col justify-left'>
+                  <Text size="lead" as="h4"> Complete the look</Text>
+                  <ShortProduct product={product}/>
+                  <ShortProduct product={product}/>
+                </div>
               </div>
             </section>
           </div>
