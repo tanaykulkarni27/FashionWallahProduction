@@ -1,0 +1,42 @@
+.brand_logo {
+  width: 70vw;
+  height: auto;
+}
+
+.contact_input {
+  min-width: 50vw;
+}
+
+.row_col_mx {
+  max-width: 90vw;
+}
+
+.footer_links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.footer_link {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-svg {
+  width: 57px;
+  height: 36px;
+}
+
+.mob-mar {
+  margin-bottom: 30px;
+}

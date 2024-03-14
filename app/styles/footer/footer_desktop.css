@@ -1,0 +1,23 @@
+.brand_logo {
+  width: 35vw;
+  height: auto;
+}
+
+.row_col_mx {
+  max-width: 30vw;
+}
+
+.footer_links {
+  /* flex flex-row justify-center items-start */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.card-svg {
+  width: 57px;
+  height: 36px;
+}

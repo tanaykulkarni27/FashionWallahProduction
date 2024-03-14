@@ -1,0 +1,40 @@
+.page {
+  margin-top: 0px;
+  background-color: rgb(28, 28, 28);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page_title {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.section-header {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.section-header__title {
+  font-size: 20px;
+  font-weight: normal;
+  text-align: center;
+  width: fit-content;
+}
+
+.rte {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.body {
+  width: 60%;
+  margin-bottom: 20px;
+}

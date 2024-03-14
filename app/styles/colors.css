@@ -1,0 +1,70 @@
+.orange_background {
+  background: linear-gradient(
+    180deg,
+    rgba(241, 218, 176, 1) 1.799%,
+    rgba(235, 158, 86, 1) 18%,
+    rgba(240, 171, 110, 1) 100%
+  );
+}
+
+.pink_purple_background {
+  background: linear-gradient(
+    180deg,
+    rgba(169, 161, 145, 1) 2%,
+    rgba(196, 121, 121, 1) 41%,
+    rgba(242, 193, 184, 1) 68%,
+    rgba(240, 171, 110, 1) 100%
+  );
+}
+
+.dark_organge_background {
+  background: linear-gradient(
+    180deg,
+    rgba(236, 230, 222, 1),
+    rgba(190, 169, 153, 1) 67%,
+    rgba(240, 171, 110, 1) 100%
+  );
+}
+
+.trending_collection {
+  background: linear-gradient(
+    180deg,
+    rgba(176, 150, 132, 1) 1%,
+    rgba(122, 114, 95, 1) 80%,
+    transparent
+  );
+}
+
+.product-page-style {
+  background: linear-gradient(
+    70deg,
+    rgba(87, 82, 73, 1) 1%,
+    rgba(124, 117, 103, 1) 55%,
+    rgba(53, 58, 58, 1) 100%
+  );
+  color: white;
+}
+
+.trans_taupe {
+  background: linear-gradient(to bottom, #fff 15%, rgba(87, 82, 73, 1) 100%);
+  /* background: red; */
+  color: white;
+}
+.taupe-dark {
+  background: linear-gradient(
+    to bottom,
+    rgba(87, 82, 73, 1) 1%,
+    rgba(124, 117, 103, 1) 55%,
+    rgba(53, 58, 58, 1) 100%
+  );
+  color: white;
+}
+
+.off_white_white {
+  background: linear-gradient(to bottom, #fff, #ffefba 90%, white 100%);
+  color: black;
+}
+
+.stone_gray {
+  background-color: rgb(209 213 219);
+}
