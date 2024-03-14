@@ -28,7 +28,7 @@ function SubMenu({items, title, side = null}: SubMenuProps) {
         className={`absolute ${
           isSubMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         } transition duration-300 ease-in-out
-        ${side==='right'?'top-0 left-full':'mt-2 space-y-2 '} divide-y divide-white shadow-lg text-bold bg-primary dark:bg-contrast`}
+        ${side==='right'?'top-0 left-full':'mt-2 space-y-2 '} divide-y divide-white shadow-lg text-bold bg-primary/80 dark:bg-contrast/60 backdrop-blur-lg`}
       >
         {items.map((subItem) => {
           return subItem.items?(<SubMenu items={subItem?.items} title={subItem.title} side={'right'} />):(
