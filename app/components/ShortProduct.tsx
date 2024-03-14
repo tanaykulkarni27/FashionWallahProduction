@@ -13,7 +13,7 @@ export default function ShortProduct({product}:{product:ProductCardFragment;}) {
             />
         </div>
         <div className="flex flex-row justify-between w-full">
-            <div className="flex flex-col justify-left items-start font-base w-3/4">
+            <div className="flex flex-col justify-left items-start font-base w-3/4 md:w-1/2">
                 <div className="font-bold line-clamp-1">{product.title} </div>
                 <div className="font-extralight">
                     <Money data={product.selectedVariant.price} />

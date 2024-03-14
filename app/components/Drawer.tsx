@@ -108,7 +108,7 @@ export function Drawer({
                       onClick={onClose}
                       data-test="close-cart"
                     >
-                      <IconClose aria-label="Close panel" />
+                      <IconClose aria-label="Close panel" className='bg-white rounded-full text-black'/>
                     </button>
                   </header>
                   {children}

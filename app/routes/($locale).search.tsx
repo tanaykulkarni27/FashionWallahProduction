@@ -2,11 +2,12 @@ import {defer, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {Await, Form, useLoaderData} from '@remix-run/react';
 import {Suspense} from 'react';
 import {Pagination, getPaginationVariables} from '@shopify/hydrogen';
-
+import {IoSearchOutline} from 'react-icons/io5';
 import {
   FeaturedCollections,
   Grid,
   Heading,
+  IconSearch,
   Input,
   PageHeader,
   ProductCard,
@@ -90,7 +91,7 @@ export default function Search() {
             variant="search"
           />
           <button className="absolute right-0 py-2" type="submit">
-            Go
+            <IoSearchOutline size={40}/>
           </button>
         </Form>
       </PageHeader>

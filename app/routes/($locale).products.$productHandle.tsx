@@ -172,6 +172,63 @@ export default function Product() {
                   )}
                 </Await>
               </Suspense>
+
+              <video
+                src={'https://cdn.storista.io/stories/clips/a4b2wuRroWFqisMGLJLLjl9RBrtFKWUvppR00qkDRDNE.mp4'}
+                className="rounded-xl"
+                style={{ width: "15vw", height: "auto" }}
+                autoPlay
+                loop
+                muted
+              />
+
+        {/* OFFER */}
+        <div className="w-full rounded-md flex flex-col justify-center items-center bg-white/30 p-3">
+          <div className="flex flex-row justify-center items-center">
+            <div>
+              <svg
+                role="presentation"
+                fill="none"
+                focusable="false"
+                strokeWidth="1.6"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                className="icon icon-picto-percent"
+              >
+                <path
+                  d="M12 22.714c6.857 0 10.714-3.857 10.714-10.714S18.857 1.286 12 1.286 1.286 5.143 1.286 12 5.143 22.714 12 22.714Z"
+                  fill="currentColor"
+                  fillOpacity="0"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="m7.714 16.286 8.571-8.572"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M8.571 9.429a.857.857 0 1 0 0-1.715.857.857 0 0 0 0 1.715v0ZM15.428 16.286a.857.857 0 1 0 0-1.715.857.857 0 0 0 0 1.715Z"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <p className="w-full ml-2">Offer</p>
+          </div>
+          <div className="my-2">
+            <h5>Buy any 2 → 15% off</h5>
+          </div>
+          <div className="my-2">
+            <h5>Buy any 3 → 20% off</h5>
+          </div>
+        </div>
+
               <div className="grid gap-4 py-4">
                 {descriptionHtml && (
                   <ProductDetail
@@ -407,51 +464,6 @@ export function ProductForm({
             )}
           </div>
         )}
-        <div className="w-full rounded-md flex flex-col justify-center items-center bg-white/30 p-3">
-          <div className="flex flex-row justify-center items-center">
-            <div>
-              <svg
-                role="presentation"
-                fill="none"
-                focusable="false"
-                strokeWidth="1.6"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                className="icon icon-picto-percent"
-              >
-                <path
-                  d="M12 22.714c6.857 0 10.714-3.857 10.714-10.714S18.857 1.286 12 1.286 1.286 5.143 1.286 12 5.143 22.714 12 22.714Z"
-                  fill="currentColor"
-                  fillOpacity="0"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="m7.714 16.286 8.571-8.572"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M8.571 9.429a.857.857 0 1 0 0-1.715.857.857 0 0 0 0 1.715v0ZM15.428 16.286a.857.857 0 1 0 0-1.715.857.857 0 0 0 0 1.715Z"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <p className="w-full ml-2">Offer</p>
-          </div>
-          <div className="my-2">
-            <h5>Buy any 2 → 15% off</h5>
-          </div>
-          <div className="my-2">
-            <h5>Buy any 3 → 20% off</h5>
-          </div>
-        </div>
       </div>
     </div>
   );

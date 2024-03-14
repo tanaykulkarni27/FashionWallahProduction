@@ -161,17 +161,6 @@ export default function Homepage() {
             speed="slow"
           />
         </div>
-        {/* <FadeCarousel dots={true} autoplay={false}>
-          {TEST_RATING_DATA.map((item) => (
-            <div className="w-fit">
-              <RatingFeed
-                RatingObject={item}
-                rateSize={20}
-                fontStyle={{color: 'white', fontSize: '1.5em'}}
-              />
-            </div>
-          ))}
-        </FadeCarousel> */}
       </div>
       <div className="taupe-dark p-3">
         <p className="text-2xl mb-2">Shop by collections</p>

@@ -3,7 +3,8 @@ import {useWindowScroll} from 'react-use';
 import {Disclosure} from '@headlessui/react';
 import {Suspense, useEffect, useMemo, useState} from 'react';
 import {CartForm, Image} from '@shopify/hydrogen';
-
+import {FaWhatsapp, FaLinkedinIn, FaPinterestP,FaAngleLeft} from 'react-icons/fa';
+import {FaTwitter, FaInstagram, FaAngleRight} from 'react-icons/fa6';
 import fwLogo from '~/public/logo.png';
 import {type LayoutQuery} from 'storefrontapi.generated';
 import {
@@ -43,7 +44,6 @@ import {subMenu_Test_data} from '../testData/ComponentTestingData';
 
 import SubMenu from './Submenu';
 import {TracingBeam} from './UIAcernity/TracingBeam';
-import TestSubmenu from './TestSubmenu';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -209,6 +209,15 @@ function MenuMobileNav({
           </span>
         );
       })}
+      <div className="flex flex-row justify-between items-center w-full mb-3 mt-5">
+          <FaInstagram className="" />
+          <FaWhatsapp className="" />
+          <FaLinkedinIn className="" />
+          <FaPinterestP className="" />
+          <FaTwitter className="" />
+      </div>
+      <div className="border-b-2 w-full"></div>
+      <div className="mt-3 w-full">Account</div>
     </nav>
   );
 }
@@ -596,14 +605,14 @@ function FooterMenu({menu}: {menu?: EnhancedMenu}) {
       {(menu?.items || []).map((item) => (
         <section
           key={item.id}
-          className={styles.section + ' text-md mx-6 lg:mx-12 text-center'}
+          className={styles.section + ' text-md mx-4 lg:mx-12 text-center'}
         >
           <Link
             key={item.id}
             to={item.to}
             target={item.target}
             prefetch="intent"
-            className={({isActive}) => (isActive ? 'pb-1 border-b' : 'pb-1')}
+            className={({isActive}) => (isActive ? 'pb-1' : 'pb-1')}
           >
             {item.title}
           </Link>
