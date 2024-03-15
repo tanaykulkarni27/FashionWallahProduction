@@ -79,9 +79,6 @@ export default function Search() {
   return (
     <>
       <PageHeader>
-        <Heading as="h1" size="copy">
-          Search
-        </Heading>
         <Form method="get" className="relative flex w-full text-heading">
           <Input
             defaultValue={searchTerm}
@@ -89,9 +86,10 @@ export default function Search() {
             placeholder="Search…"
             type="search"
             variant="search"
+            className='text-xl'
           />
           <button className="absolute right-0 py-2" type="submit">
-            <IoSearchOutline size={40}/>
+            <IoSearchOutline size={30}/>
           </button>
         </Form>
       </PageHeader>
