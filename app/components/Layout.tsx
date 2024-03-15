@@ -588,7 +588,13 @@ const ContactSection = () => {
                     bg-transparent
                     focus:text-white
                     footer_font
-                    contact_input"
+                    contact_input
+                    border-x-0 border-t-0
+                    ring-0
+                    border-b-2 border-primary/10
+                    focus:ring-0
+                    focus:border-primary/10
+                    "
                 style={{minWidth: '10vw', maxWidth: '90vw'}}
                 id="Email"
                 type="text"
