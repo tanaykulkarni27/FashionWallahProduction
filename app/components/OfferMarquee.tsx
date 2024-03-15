@@ -10,25 +10,18 @@ type OfferMarqueProps = {
 
 export function OfferMarque({offers}: OfferMarqueProps) {
   return (
-    <div
-      className="overflow-x-hidden"
-      style={{
-        backgroundImage:
-          'linear-gradient(70deg,rgba(87,82,73,1) 1%,rgba(124,117,103,1) 55%,rgba(53,58,58,1) 100%)',
-      }}
-    >
-      <div>
-
+    <div className="relative flex overflow-x-hidden bg-gradient-to-r from-[#575249] via-[#7c7567]  to-[#353a3a]">
+      <div className="py-6 animate-marquee whitespace-nowrap">
+        {offers.map((offer) => (
+            <span className="mx-4 text-2xl" key={'marquee_'+offer.id}>{offer.text}</span>            
+        ))}
       </div>
-      <marquee>
-        <div className="flex flex-row justify-between items-center">
-          {[...offers].map((offer) => (
-            <div key={offer.id} className="text-sm mx-5">
-              <li>{offer.text}</li>
-            </div>
-          ))}
-        </div>
-      </marquee>
+
+      <div className="absolute top-0 py-6 animate-marquee2 whitespace-nowrap">
+        {offers.map((offer) => (
+            <span className="mx-4 text-2xl" key={'marquee_2_'+offer.id}>{offer.text}</span>            
+        ))}
+      </div>
     </div>
   );
 }

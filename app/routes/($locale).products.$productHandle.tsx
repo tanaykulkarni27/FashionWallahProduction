@@ -174,9 +174,8 @@ export default function Product() {
               </Suspense>
 
               <video
-                src={'https://cdn.storista.io/stories/clips/a4b2wuRroWFqisMGLJLLjl9RBrtFKWUvppR00qkDRDNE.mp4'}
+                src={'https://assets.mixkit.co/videos/preview/mixkit-tree-with-yellow-flowers-1173-large.mp4'}
                 className="rounded-xl"
-                style={{ width: "15vw", height: "auto" }}
                 autoPlay
                 loop
                 muted
