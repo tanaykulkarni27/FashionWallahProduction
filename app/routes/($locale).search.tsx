@@ -94,7 +94,7 @@ export default function Search() {
             className='text-xl text-contrast'
           />
           <button className="absolute right-0 py-2" type="submit">
-            <IoSearchOutline size={30} className='text-contrast'/>
+            <IconSearch width='w-[40px]' height='h-40px' className='text-contrast'/>
           </button>
         </Form>
       </PageHeader>

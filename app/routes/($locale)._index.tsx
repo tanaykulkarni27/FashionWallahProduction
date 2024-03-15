@@ -8,9 +8,9 @@ import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {getHeroPlaceholder} from '~/lib/placeholders';
 import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
-import FadeCarousel, {
+import BannerCarousel, {
   links as FadeLinks,
-} from '~/components/fadeCarousel/FadeCarousel';
+} from '~/components/fadeCarousel/BannerCarousel';
 
 // MOCK DATA IMPORTS
 import RatingFeed from '~/components/RatingFeed';
@@ -21,7 +21,6 @@ import {
   TEST_COLLECTIONS,
   HOME_BANNER_DATA,
 } from '../testData/ComponentTestingData';
-
 import {links} from '~/components/HomePage';
 
 export const headers = routeHeaders;
@@ -93,32 +92,14 @@ export default function Homepage() {
   const skeletons = getHeroPlaceholder([{}, {}, {}]);
 
   return (
-    <>
+    <div className='bg-red-500'>
       {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
       )}
-
-      <div className="home">
-        <FadeCarousel dots={true} autoplay={true}>
-          {HOME_BANNER_DATA.map((item, index) => (
-            <div key={index + 'ID'} className="m-0 p-0">
-              <div
-                className={
-                  'flex flex-row justify-center items-center m-0  ' + item.class
-                }
-              >
-                <div></div>
-                <img
-                  src={item.image.url}
-                  key={item.image.id}
-                  className="rounded-2xl m-0 banner_image aspect-[9/16] lg:aspect-[16/9]"
-                />
-              </div>
-            </div>
-          ))}
-        </FadeCarousel>
+      <div className='block'>
+        <BannerCarousel Banner_Data={HOME_BANNER_DATA}/>
       </div>
-      <div className="gap_filler"></div>
+      <div className="w-full h-[100px] bg-gradient-to-b from-[#f0ab6e] to-white m-0"></div>
       <div className="off_white_white">
         {featuredProducts && (
           <Suspense>
@@ -154,13 +135,13 @@ export default function Homepage() {
           count={[1407, 23123]}
           label={['reviews', 'happy customers']}
         />
-        <div className="flex justify-center items-center">
+        {/* <div className="flex justify-center items-center">
           <InfiniteMarquee
             items={TEST_RATING_DATA}
             direction="left"
             speed="slow"
           />
-        </div>
+        </div> */}
       </div>
       <div className="taupe-dark p-3">
         <p className="text-2xl mb-2">Shop by collections</p>
@@ -265,7 +246,7 @@ export default function Homepage() {
           </Await>
         </Suspense>
       )}
-    </>
+    </div>
   );
 }
 
@@ -295,9 +276,7 @@ function ReviewsNRating({
   );
 }
 
-// export function links(){
-//   return [...FadeLinks(),...HomeLinks()];
-// }
+
 
 const COLLECTION_CONTENT_FRAGMENT = `#graphql
   fragment CollectionContent on Collection {

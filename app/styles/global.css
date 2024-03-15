@@ -11,10 +11,8 @@
 
 .gap_filler {
   width: 100%;
-  height: 100px;
+  height: 150px;
   background: linear-gradient(to bottom, rgba(240, 171, 110, 1), white);
-  margin: 0;
-  /* transform: translateY(-6.3px); */
 }
 
 .no_margin {

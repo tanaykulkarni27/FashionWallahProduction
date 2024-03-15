@@ -41,7 +41,7 @@ import footer_m from './styles/footer/footer_mobile.css';
 import desktop from './styles/global/desktop.css';
 import mobile from './styles/global/mobile.css';
 import tablet from './styles/global/tablet.css';
-import {links as FadeLinks} from './components/fadeCarousel/FadeCarousel';
+import BannerCarouselCss from './components/fadeCarousel/BannerCarousel.css';
 
 // This is important to avoid re-fetching root queries on sub-navigations
 export const shouldRevalidate: ShouldRevalidateFunction = ({
@@ -119,8 +119,11 @@ export const links: LinksFunction = () => {
       href: 'https://shop.app',
     },
     {rel: 'icon', type: 'image/svg+xml', href: favicon},
-    // Carousel links
-    ...FadeLinks(),
+    // 
+    {
+      rel: 'stylesheet',
+      href: BannerCarouselCss,
+    },
   ];
 };
 

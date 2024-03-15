@@ -11,9 +11,9 @@ function Icon({
   className,
   fill = 'currentColor',
   stroke,
-  ...props
   width = 'w-5',
-  height = 'h-5'
+  height = 'h-5',
+  ...props
 }: IconProps) {
   return (
     <svg

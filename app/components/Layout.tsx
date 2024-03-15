@@ -7,8 +7,6 @@ import {FaWhatsapp, FaLinkedinIn, FaPinterestP,FaAngleLeft} from 'react-icons/fa
 import {FaTwitter, FaInstagram, FaAngleRight} from 'react-icons/fa6';
 import fwLogo from '~/public/logo.png';
 import {type LayoutQuery} from 'storefrontapi.generated';
-import {IoSearchOutline} from 'react-icons/io5';
-import {RiShoppingBag3Fill} from 'react-icons/ri';
 import {
   Drawer,
   useDrawer,
@@ -266,13 +264,14 @@ function MobileHeader({
     <header
       role="banner"
       className={`
-      text-contrast backdrop-blur-md bg-white/30 ${scrolled ? '' : 'stone_gray'}
-      flex lg:hidden items-center h-nav sticky z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8 z-50`}
+      text-contrast ${scrolled ? 'backdrop-blur-md bg-white/30' : isHome?'bg-inherit':'stone_gray'}
+      ${isHome?'fixed':'sticky'}
+      flex lg:hidden items-center h-nav z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8 z-50`}
     >
       <div className="flex items-center justify-start w-full gap-4">
         <button
           onClick={openMenu}
-          className="relative flex items-center justify-center w-8 h-8"
+          className="relative flex items-center justify-center"
         >
           <IconMenu width='w-[20px]' height='h-[20px]'/>
         </button>
@@ -283,7 +282,7 @@ function MobileHeader({
         >
           <button
             type="submit"
-            className="relative flex items-center justify-center w-8 h-8"
+            className="relative flex items-center justify-center"
           >
             <IconSearch width='w-[20px]' height='h-[20px]' />
           </button>
@@ -348,14 +347,9 @@ function DesktopHeader({
   return (
     <header
       role="banner"
-    //     isHome
-    //     ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-    //     : 'bg-contrast/80 text-primary'
-    // } ${
-    //   !isHome && y > 50 && ' shadow-lightHeader'
-    // }
-      className={`text-contrast backdrop-blur-md bg-white/30 ${scrolled ? '' : 'stone_gray'}
-        hidden h-nav lg:flex items-center sticky transition duration-300 z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8 z-50`}
+      className={`${isHome?'fixed':'sticky'}
+          text-contrast ${scrolled ? 'backdrop-blur-md bg-white/30' : isHome?'bg-inherit':'stone_gray'} 
+          hidden h-nav lg:flex items-center transition duration-300 z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8 z-50`}
     >
       <div className="flex items-center gap-12">
         <Link className="font-bold" to="/" prefetch="intent">

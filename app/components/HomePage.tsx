@@ -5,7 +5,7 @@ import {Image, Money} from '@shopify/hydrogen';
 
 import FadeCarousel, {
   links as FadeCss,
-} from '~/components/fadeCarousel/FadeCarousel';
+} from '~/components/fadeCarousel/BannerCarousel';
 
 import HorizontalCarousel, {
   links as HorizontalCss,
