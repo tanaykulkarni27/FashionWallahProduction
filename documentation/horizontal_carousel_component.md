@@ -1,8 +1,9 @@
-# Documentation for FadeCarousel.tsx
-The FadeCarousel component is a React component that uses the react-slick library to create a fading carousel with optional navigation dots. It supports autoplay functionality and provides a sleek transition between slides.
-### Props and usage
-`dots`: It is a boolean value that indicates weather dots should be display or not.
-
-`arrows`: It is a boolean value that indicates weather show arrows to slide over components or not.
-
-`children`: Children props contains all the html that you have declared in the scope of the component.
+# Documentation for BannerCarousel.tsx
+BannerCarousel takes the array of banners as prop `Banner_Data`<br>
+The root div has got following classes : <br>
+```css
+.relative{ position:relative; } /* this is used to position the child elements */
+.h-screen{ height:100vh; } /* height same as screen height */
+.w-screen{ width:100vw; } /* width same as screen width */
+```
+We iterate over the array of banners 

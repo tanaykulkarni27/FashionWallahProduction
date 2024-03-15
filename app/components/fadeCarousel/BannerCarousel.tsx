@@ -16,25 +16,12 @@ type CarouselProps = {
 
 export default function BannerCarousel({ Banner_Data }: CarouselProps) {
   const [activeIndex,setActiveIndex] = useState(0);
-  const [headerHeight,setHeaderHeight] = useState('0px');
   const go_at = (index:number)=>{
     setActiveIndex(()=>index);
   }
-  // useEffect(()=>{
-  //   var headers = document.getElementsByClassName('navbar_element');
-    
-  //   for(var i of headers){
-  //     console.log('find something');
-  //     console.log(i.offsetHeight);
-  //       if(i.style.display != 'none'){
-  //         setHeaderHeight(i.style.height);
-  //         break;
-  //       }
-  //   } 
 
-  // })
   return (
-    <div className={`relative w-full h-[110vh] ${Banner_Data[activeIndex].class}`}>
+    <div className={`relative w-full h-screen ${Banner_Data[activeIndex].class}`}>
       {Banner_Data.map((item,index)=>{
         return <Transition
         show={index === activeIndex}
@@ -69,4 +56,3 @@ export default function BannerCarousel({ Banner_Data }: CarouselProps) {
     </div> 
   );
 }
-// 
