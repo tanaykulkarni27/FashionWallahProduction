@@ -244,18 +244,30 @@ function MobileHeader({
   openCart: () => void;
   openMenu: () => void;
 }) {
-  // useHeaderStyleFix(containerStyle, setContainerStyle, isHome);
+
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      setScrolled(offset > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const params = useParams();
 
   return (
     <header
       role="banner"
-      className={`${
-        isHome
-          ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-          : 'bg-contrast/80 text-primary'
-      } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8 z-50`}
+      className={`
+      text-contrast backdrop-blur-md bg-white/30 ${scrolled ? '' : 'stone_gray'}
+      flex lg:hidden items-center h-nav sticky z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8 z-50`}
     >
       <div className="flex items-center justify-start w-full gap-4">
         <button
@@ -317,16 +329,33 @@ function DesktopHeader({
 }) {
   const params = useParams();
   const {y} = useWindowScroll();
+
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      setScrolled(offset > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <header
       role="banner"
-      className={`${
-        isHome
-          ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-          : 'bg-contrast/80 text-primary'
-      } ${
-        !isHome && y > 50 && ' shadow-lightHeader'
-      } hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8 z-50`}
+    //     isHome
+    //     ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
+    //     : 'bg-contrast/80 text-primary'
+    // } ${
+    //   !isHome && y > 50 && ' shadow-lightHeader'
+    // }
+      className={`text-contrast backdrop-blur-md bg-white/30 ${scrolled ? '' : 'stone_gray'}
+        hidden h-nav lg:flex items-center sticky transition duration-300 z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8 z-50`}
     >
       <div className="flex items-center gap-12">
         <Link className="font-bold" to="/" prefetch="intent">
@@ -605,7 +634,7 @@ function FooterMenu({menu}: {menu?: EnhancedMenu}) {
 
   return (
     <div
-      className="w-full flex justify-center items-center stone_gray"
+      className="w-full flex justify-center items-center stone_gray text-contrast"
     >
       {(menu?.items || []).map((item) => (
         <section
