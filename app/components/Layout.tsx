@@ -7,6 +7,8 @@ import {FaWhatsapp, FaLinkedinIn, FaPinterestP,FaAngleLeft} from 'react-icons/fa
 import {FaTwitter, FaInstagram, FaAngleRight} from 'react-icons/fa6';
 import fwLogo from '~/public/logo.png';
 import {type LayoutQuery} from 'storefrontapi.generated';
+import {IoSearchOutline} from 'react-icons/io5';
+import {RiShoppingBag3Fill} from 'react-icons/ri';
 import {
   Drawer,
   useDrawer,
@@ -193,7 +195,7 @@ function MenuMobileNav({
             {item.title}
           </div>
         ) : (
-          <span key={item.id} className="block">
+          <div className="flex flex-row items-center justify-between w-full my-5" key={item.id}>
             <Link
               to={item.to}
               target={item.target}
@@ -206,7 +208,16 @@ function MenuMobileNav({
                 {item.title}
               </Text>
             </Link>
-          </span>
+            <Link
+              key={item.id}
+              to={item.to}
+              target={item.target}
+              prefetch="intent"
+              className={({isActive}) => (isActive ? 'pb-1' : 'pb-1')}
+            >
+              <FaAngleRight className="rounded-full bg-[#d3d3d3] text-black hover:bg-slate-950 hover:text-white" />
+            </Link>
+          </div>
         );
       })}
       <div className="flex flex-row justify-between items-center w-full mb-3 mt-5">
@@ -262,7 +273,7 @@ function MobileHeader({
             type="submit"
             className="relative flex items-center justify-center w-8 h-8"
           >
-            <IconSearch />
+            <IoSearchOutline style={{fontSize: '25px'}} />
           </button>
           <Input
             className={
@@ -277,19 +288,14 @@ function MobileHeader({
           />
         </Form>
       </div>
-
-      <Link
-        className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
-        to="/"
-      >
-        <Heading
-          className="font-bold text-center leading-none"
-          as={isHome ? 'h1' : 'h2'}
+      <div>
+        <Link
+          className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
+          to="/"
         >
-          <img src={fwLogo} className="w-80" alt="Logo" />
-        </Heading>
-      </Link>
-
+            <img src={fwLogo}/>
+        </Link>
+      </div>
       <div className="flex items-center justify-end w-full gap-4">
         {/* <AccountLink className="relative flex items-center justify-center w-8 h-8" /> */}
         <CartCount isHome={isHome} openCart={openCart} />
@@ -599,8 +605,7 @@ function FooterMenu({menu}: {menu?: EnhancedMenu}) {
 
   return (
     <div
-      className="w-full flex justify-center items-center
-    bg-gradient-to-b from-[#0F2027] to-[#2C5364]"
+      className="w-full flex justify-center items-center stone_gray"
     >
       {(menu?.items || []).map((item) => (
         <section
