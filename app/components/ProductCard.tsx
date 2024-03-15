@@ -120,14 +120,14 @@ export function ProductCard({
             },
           ]}
           variant="secondary"
-          className="mt-2 absolute bottom-0 right-0 bg-[#5d8bd7] text-white p-1 translate-y-1/2 rounded-l-md rounded-b-md text-sm"
+          className="bg-[#5d8bd7] text-white p-1 translate-y-1/2 rounded-l-md rounded-b-md text-sm"
           analytics={{
             products: [productAnalytics],
             totalValue: parseFloat(productAnalytics.price),
           }}
         >
           <Text as="span" className="flex items-center justify-center gap-2">
-            Add to Cart
+            Add to cart
           </Text>
         </AddToCartButton>
       )}

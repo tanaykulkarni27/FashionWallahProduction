@@ -1,5 +1,6 @@
 import type {ProductCardFragment} from 'storefrontapi.generated';
 import {flattenConnection, Image, Money, useMoney} from '@shopify/hydrogen';
+import { IoAdd } from 'react-icons/io5';
 
 export default function ShortProduct({product}:{product:ProductCardFragment;}) {
 
@@ -20,7 +21,7 @@ export default function ShortProduct({product}:{product:ProductCardFragment;}) {
                 </div>
             </div>
             <div className='h-fit'>
-                <button className="rounded-lg bg-black/10 p-1 m-1">Add +</button>
+                <button className="rounded-lg bg-black/10 p-1 m-1"><IoAdd size={20}/></button>
             </div>
         </div>
     </div>

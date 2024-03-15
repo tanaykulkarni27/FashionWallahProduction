@@ -2,7 +2,7 @@ import {useRef, Suspense} from 'react';
 import {Disclosure, Listbox} from '@headlessui/react';
 import {defer, redirect, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {useLoaderData, Await} from '@remix-run/react';
-import type {ShopifyAnalyticsProduct} from '@shopify/hydrogen';
+import {ShopifyAnalyticsProduct,Video } from '@shopify/hydrogen';
 import {
   AnalyticsPageType,
   Money,
@@ -153,7 +153,7 @@ export default function Product() {
           <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:pt-nav hiddenScroll md:overflow-y-scroll flex justify-center items-center">
             <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
               <div className="grid gap-2">
-                <Heading as="h1" className="whitespace-normal product-info">
+                <Heading as="h1" className="whitespace-normal text-left">
                   {title}
                 </Heading>
                 {vendor && (
@@ -172,15 +172,6 @@ export default function Product() {
                   )}
                 </Await>
               </Suspense>
-
-              <video
-                src={'https://assets.mixkit.co/videos/preview/mixkit-tree-with-yellow-flowers-1173-large.mp4'}
-                className="rounded-xl"
-                autoPlay
-                loop
-                muted
-              />
-
         {/* OFFER */}
         <div className="w-full rounded-md flex flex-col justify-center items-center bg-white/30 p-3">
           <div className="flex flex-row justify-center items-center">
