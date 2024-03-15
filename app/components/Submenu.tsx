@@ -28,14 +28,14 @@ function SubMenu({items, title, side = null}: SubMenuProps) {
         className={`absolute ${
           isSubMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         } transition duration-300 ease-in-out
-        ${side==='right'?'top-0 left-full':'mt-2 space-y-2 '} divide-y divide-white shadow-lg text-bold bg-primary/80 dark:bg-contrast/60 backdrop-blur-lg`}
+        ${side==='right'?'top-0 left-full':'mt-2 space-y-2 '} divide-y divide-contrast shadow-lg text-bold stone_gray`}
       >
         {items.map((subItem) => {
           return subItem.items?(<SubMenu items={subItem?.items} title={subItem.title} side={'right'} />):(
             <NavLink
               key={subItem.id}
               to={subItem.url}
-              className="block px-4 py-2 text-sm text-contrast dark:text-white text-center"
+              className="block px-4 py-2 text-sm text-contrast text-center"
               style={activeLinkStyle}
             >
               {subItem.title}

@@ -82,8 +82,8 @@ export default function Search() {
   }
   return (
     <>
-      <PageHeader>
-        <div className='w-full flex flex-row justify-end items-center'><Button variant={'primary'} className={'text-base bg-transparent'} onClick={go_back}>X</Button></div>
+      <PageHeader className='stone_gray'>
+        <div className='w-full flex flex-row justify-end items-center'><Button className={'text-base bg-transparent text-contrast'} onClick={go_back}>X</Button></div>
         <Form method="get" className="relative flex w-full text-heading">
           <Input
             defaultValue={searchTerm}
@@ -91,10 +91,10 @@ export default function Search() {
             placeholder="Search…"
             type="search"
             variant="search"
-            className='text-xl'
+            className='text-xl text-contrast'
           />
           <button className="absolute right-0 py-2" type="submit">
-            <IoSearchOutline size={30}/>
+            <IoSearchOutline size={30} className='text-contrast'/>
           </button>
         </Form>
       </PageHeader>
