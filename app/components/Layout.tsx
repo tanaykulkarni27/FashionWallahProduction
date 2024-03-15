@@ -263,9 +263,7 @@ function MobileHeader({
   return (
     <header
       role="banner"
-      className={`
-      text-contrast ${scrolled ? 'backdrop-blur-md bg-white/30' : isHome?'bg-inherit':'stone_gray'}
-      ${isHome?'fixed':'sticky'}
+      className={`text-contrast ${scrolled ? 'backdrop-blur-md bg-white/30':'stone_gray'} sticky
       flex lg:hidden items-center h-nav z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8 z-50`}
     >
       <div className="flex items-center justify-start w-full gap-4">
@@ -347,8 +345,8 @@ function DesktopHeader({
   return (
     <header
       role="banner"
-      className={`${isHome?'fixed':'sticky'}
-          text-contrast ${scrolled ? 'backdrop-blur-md bg-white/30' : isHome?'bg-inherit':'stone_gray'} 
+      className={`navbar_element sticky
+          text-contrast ${scrolled ? 'backdrop-blur-md bg-white/30' : 'stone_gray'} 
           hidden h-nav lg:flex items-center transition duration-300 z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8 z-50`}
     >
       <div className="flex items-center gap-12">
