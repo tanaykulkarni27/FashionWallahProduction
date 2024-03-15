@@ -64,7 +64,7 @@ export function Layout({children, layout}: LayoutProps) {
           </a>
         </div>
 
-        {/* {OFFER_DATA && <OfferMarque offers={OFFER_DATA} />} */}
+        {OFFER_DATA && <OfferMarque offers={OFFER_DATA} />}
 
         {headerMenu && layout?.shop.name && (
           <Header title={layout.shop.name} menu={headerMenu} />

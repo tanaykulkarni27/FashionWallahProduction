@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import type {ShopifyAnalyticsProduct} from '@shopify/hydrogen';
 import {flattenConnection, Image, Money, useMoney} from '@shopify/hydrogen';
 import type {MoneyV2, Product} from '@shopify/hydrogen/storefront-api-types';
-
+import { IoAdd } from "react-icons/io5";
 import type {ProductCardFragment} from 'storefrontapi.generated';
 import {Text, Link, AddToCartButton, Button} from '~/components';
 import {isDiscounted, isNewArrival} from '~/lib/utils';
@@ -75,12 +75,16 @@ export function ProductCard({
             <Text
               as="label"
               size="fine"
-              className="absolute top-0 right-0 m-4 text-right p-1 bg-red-500 text-white"
+              className={`absolute top-0 left-0 m-4 text-right p-1 bg-red-500 text-white ${cardLabel === '' || !cardLabel ? 'hidden':''}`}
             >
               {cardLabel}
             </Text>
+            {/* QUICK ADD TO CART */}
+            <button className='bg-contrast absolute bottom-0 right-0 m-4'>
+              <IoAdd size={30} className='text-[#f5db8b] hover:rotate-180 transition duration-500' />
+            </button>
           </div>
-          <div className="grid gap-1 flex flex-col justify-center items-center mt-6">
+          <div className="grid gap-1 flex flex-col justify-center items-center mt-1">
             <Text
               className="overflow-hidden text-sm text-center w-100 line-clamp-2 decoration-dashed"
               as="h3"

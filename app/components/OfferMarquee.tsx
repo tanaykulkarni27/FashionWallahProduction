@@ -11,15 +11,18 @@ type OfferMarqueProps = {
 export function OfferMarque({offers}: OfferMarqueProps) {
   return (
     <div
-      className="p-2 text-white product-page-style w-full flex flex-row justify-between items-center"
+      className="overflow-x-hidden"
       style={{
         backgroundImage:
           'linear-gradient(70deg,rgba(87,82,73,1) 1%,rgba(124,117,103,1) 55%,rgba(53,58,58,1) 100%)',
       }}
     >
+      <div>
+
+      </div>
       <marquee>
         <div className="flex flex-row justify-between items-center">
-          {[...offers, ...offers].map((offer) => (
+          {[...offers].map((offer) => (
             <div key={offer.id} className="text-sm mx-5">
               <li>{offer.text}</li>
             </div>

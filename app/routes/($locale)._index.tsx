@@ -135,13 +135,13 @@ export default function Homepage() {
           count={[1407, 23123]}
           label={['reviews', 'happy customers']}
         />
-        {/* <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center">
           <InfiniteMarquee
             items={TEST_RATING_DATA}
             direction="left"
             speed="slow"
           />
-        </div> */}
+        </div>
       </div>
       <div className="taupe-dark p-3">
         <p className="text-2xl mb-2">Shop by collections</p>

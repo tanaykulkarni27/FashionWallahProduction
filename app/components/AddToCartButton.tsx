@@ -58,10 +58,6 @@ export function AddToCartButton({
             >
               {children}
             </Button>
-
-            {/* <div  className={"fixed bottom-0 w-full lg:hidden backdrop-blur-md bg-black/30 p-2 flex justify-center"}>
-              <Button type="submit" className={'bg-[#5d8bd7] px-20 rounded-md'}>Add to cart </Button>
-            </div> */}
           </AddToCartAnalytics>
         );
       }}
