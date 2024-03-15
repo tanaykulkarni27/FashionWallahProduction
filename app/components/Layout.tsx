@@ -274,7 +274,7 @@ function MobileHeader({
           onClick={openMenu}
           className="relative flex items-center justify-center w-8 h-8"
         >
-          <IconMenu />
+          <IconMenu width='w-[20px]' height='h-[20px]'/>
         </button>
         <Form
           method="get"
@@ -285,7 +285,7 @@ function MobileHeader({
             type="submit"
             className="relative flex items-center justify-center w-8 h-8"
           >
-            <IoSearchOutline style={{fontSize: '25px'}} />
+            <IconSearch width='w-[20px]' height='h-[20px]' />
           </button>
           <Input
             className={
@@ -472,7 +472,7 @@ function Badge({
   const BadgeCounter = useMemo(
     () => (
       <>
-        <IconBag />
+        <IconBag width='w-[20px]' height='h-[20px]'/>
         <div
           className={`${
             dark

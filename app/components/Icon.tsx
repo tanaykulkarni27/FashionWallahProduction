@@ -2,6 +2,8 @@ import clsx from 'clsx';
 
 type IconProps = JSX.IntrinsicElements['svg'] & {
   direction?: 'up' | 'right' | 'down' | 'left';
+  width:string;
+  height:string;
 };
 
 function Icon({
@@ -10,6 +12,8 @@ function Icon({
   fill = 'currentColor',
   stroke,
   ...props
+  width = 'w-5',
+  height = 'h-5'
 }: IconProps) {
   return (
     <svg
@@ -18,7 +22,7 @@ function Icon({
       {...props}
       fill={fill}
       stroke={stroke}
-      className={clsx('w-5 h-5', className)}
+      className={clsx(width,height, className)}
     >
       {children}
     </svg>
