@@ -1,9 +1,10 @@
 import {defer, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
-import {Await, Form, useLoaderData} from '@remix-run/react';
+import {Await, Form, useLoaderData, useNavigate} from '@remix-run/react';
 import {Suspense} from 'react';
 import {Pagination, getPaginationVariables} from '@shopify/hydrogen';
 import {IoSearchOutline} from 'react-icons/io5';
 import {
+  Button,
   FeaturedCollections,
   Grid,
   Heading,
@@ -75,10 +76,14 @@ export default function Search() {
   const {searchTerm, products, noResultRecommendations} =
     useLoaderData<typeof loader>();
   const noResults = products?.nodes?.length === 0;
-
+  const navigate = useNavigate();
+  const go_back = ()=>{
+    navigate(-1);
+  }
   return (
     <>
       <PageHeader>
+        <div className='w-full flex flex-row justify-end items-center'><Button variant={'primary'} className={'text-base bg-transparent'} onClick={go_back}>X</Button></div>
         <Form method="get" className="relative flex w-full text-heading">
           <Input
             defaultValue={searchTerm}

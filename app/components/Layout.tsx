@@ -174,7 +174,7 @@ function MenuMobileNav({
   const [show_sub_menu, set_sub_menu] = useState(menu?.items);
 
   return (
-    <nav className={`grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8 w-screen`}>
+    <nav className={`grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8 w-screen text-black`}>
       <div
         className={`${show_sub_menu != menu?.items ? '' : 'hidden'}`}
         onClick={() => {
