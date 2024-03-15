@@ -569,7 +569,7 @@ function FooterLink({item}: {item: ChildEnhancedMenuItem}) {
 const ContactSection = () => {
   return (
     <div className="flex lg:flex-row flex-col justify-center lg:items-start items-center">
-      <div className="flex flex-col justify-between items-center row_col_mx my-3 lg:mx-16 mx-8">
+      <div className="flex flex-col justify-between items-center row_col_mx my-3 lg:mx-16 mx-3">
         <div className="lg:text-4xl text-2xl">Hey there 👋🏼</div>
         <div className="text-gray-200 my-3 text-2xl text-center">
           Stay in touch for good vibes & no spam.
@@ -645,7 +645,7 @@ function FooterMenu({menu}: {menu?: EnhancedMenu}) {
       {(menu?.items || []).map((item) => (
         <section
           key={item.id}
-          className={styles.section + ' text-md mx-4 lg:mx-12 text-center'}
+          className={styles.section + ' text-md mx-2 lg:mx-12 text-center'}
         >
           <Link
             key={item.id}

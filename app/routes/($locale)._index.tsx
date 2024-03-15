@@ -99,19 +99,19 @@ export default function Homepage() {
       )}
 
       <div className="home">
-        <FadeCarousel dots={false} autoplay={true}>
+        <FadeCarousel dots={true} autoplay={true}>
           {HOME_BANNER_DATA.map((item, index) => (
-            <div key={index + ' timpass no sense id'} className="m-0 p-0">
+            <div key={index + 'ID'} className="m-0 p-0">
               <div
                 className={
-                  'flex justify-center items-center m-0  ' + item.class
+                  'flex flex-row justify-center items-center m-0  ' + item.class
                 }
               >
                 <div></div>
                 <img
                   src={item.image.url}
                   key={item.image.id}
-                  className="rounded-md m-0 banner_image"
+                  className="rounded-2xl m-0 banner_image aspect-[9/16] lg:aspect-[16/9]"
                 />
               </div>
             </div>

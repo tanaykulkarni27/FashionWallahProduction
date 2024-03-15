@@ -17,6 +17,12 @@
   background-color: red;
 }
 
+
+.slick-slider > ul.slick-dots{
+  justify-items: end;
+  transform: translateY(-200%);
+}
+
 .custom_dot {
   margin-top: 10px;
   width: 10px;
@@ -26,5 +32,7 @@
 }
 
 .slick-active .custom_dot {
+  width: 20px;
+  border-radius: 5px;
   background-color: #fff;
 }

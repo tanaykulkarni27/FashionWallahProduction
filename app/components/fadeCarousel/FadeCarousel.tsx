@@ -30,7 +30,7 @@ export default function FadeCarousel({
     autoplaySpeed: 2000,
     appendDots: (dots: React.ReactElement) => <ul>{dots}</ul>,
     customPaging: () => (
-      <div className="custom_dot">
+      <div className="lg:hidden custom_dot">
         <div className="loading" />
       </div>
     ),
