@@ -2,7 +2,7 @@ import {useRef, Suspense} from 'react';
 import {Disclosure, Listbox} from '@headlessui/react';
 import {defer, redirect, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {useLoaderData, Await} from '@remix-run/react';
-import {ShopifyAnalyticsProduct,Video } from '@shopify/hydrogen';
+import {ShopifyAnalyticsProduct, Video} from '@shopify/hydrogen';
 import {
   AnalyticsPageType,
   Money,
@@ -172,58 +172,59 @@ export default function Product() {
                   )}
                 </Await>
               </Suspense>
-        {/* OFFER */}
-        <div className="w-full rounded-md flex flex-col justify-center items-center bg-white/30 p-3">
-          <div className="flex flex-row justify-center items-center">
-            <div>
-              <svg
-                role="presentation"
-                fill="none"
-                focusable="false"
-                strokeWidth="1.6"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                className="icon icon-picto-percent"
-              >
-                <path
-                  d="M12 22.714c6.857 0 10.714-3.857 10.714-10.714S18.857 1.286 12 1.286 1.286 5.143 1.286 12 5.143 22.714 12 22.714Z"
-                  fill="currentColor"
-                  fillOpacity="0"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="m7.714 16.286 8.571-8.572"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M8.571 9.429a.857.857 0 1 0 0-1.715.857.857 0 0 0 0 1.715v0ZM15.428 16.286a.857.857 0 1 0 0-1.715.857.857 0 0 0 0 1.715Z"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <p className="w-full ml-2">Offer</p>
-          </div>
-          <div className="my-2">
-            <h5>Buy any 2 → 15% off</h5>
-          </div>
-          <div className="my-2">
-            <h5>Buy any 3 → 20% off</h5>
-          </div>
-        </div>
+              {/* OFFER */}
+              <div className="w-full rounded-md flex flex-col justify-center items-center bg-white/30 py-6">
+                <div className="flex flex-row justify-center items-center">
+                  <div>
+                    <svg
+                      role="presentation"
+                      fill="none"
+                      focusable="false"
+                      strokeWidth="1.6"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      className="icon icon-picto-percent"
+                    >
+                      <path
+                        d="M12 22.714c6.857 0 10.714-3.857 10.714-10.714S18.857 1.286 12 1.286 1.286 5.143 1.286 12 5.143 22.714 12 22.714Z"
+                        fill="currentColor"
+                        fillOpacity="0"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="m7.714 16.286 8.571-8.572"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M8.571 9.429a.857.857 0 1 0 0-1.715.857.857 0 0 0 0 1.715v0ZM15.428 16.286a.857.857 0 1 0 0-1.715.857.857 0 0 0 0 1.715Z"
+                        fill="currentColor"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <p className="w-full ml-2 text-xl text-bold">Offer</p>
+                </div>
+                <div className="my-2 text-xl">
+                  <h5>Buy any 2 → 15% off</h5>
+                </div>
+                <div className="my-2 text-xl">
+                  <h5>Buy any 3 → 20% off</h5>
+                </div>
+              </div>
 
               <div className="grid gap-4 py-4">
                 {descriptionHtml && (
                   <ProductDetail
                     title="Product Details"
                     content={descriptionHtml}
+                    initState={true}
                   />
                 )}
                 {shippingPolicy?.body && (
@@ -241,11 +242,35 @@ export default function Product() {
                   />
                 )}
                 {/* COMPLETE LOOK PART */}
-                <div className='flex flex-col justify-left'>
-                  <Text size="lead" as="h4"> Complete the look</Text>
-                  <ShortProduct product={product}/>
-                  <ShortProduct product={product}/>
-                </div>
+                <Disclosure key={title} as="div" className="grid w-full gap-2">
+                  {({open}) => (
+                    <>
+                      <Disclosure.Button className="text-left">
+                        <div className="flex justify-between">
+                          <Text size="lead" as="h4">
+                            Complete the look
+                          </Text>
+                          <IconClose
+                            className={clsx(
+                              // Use spread syntax for clsx arguments
+                              'transition-transform transform-gpu duration-200',
+                              !open && 'rotate-[45deg]',
+                            )}
+                          />
+                        </div>
+                      </Disclosure.Button>
+
+                      <Disclosure.Panel
+                        className={'pb-4 pt-2 grid gap-2 text-xl'}
+                      >
+                        <div className="flex flex-col justify-left">
+                          <ShortProduct product={product} />
+                          <ShortProduct product={product} />
+                        </div>
+                      </Disclosure.Panel>
+                    </>
+                  )}
+                </Disclosure>
               </div>
             </section>
           </div>
@@ -257,10 +282,6 @@ export default function Product() {
           resolve={recommended}
         >
           {(products) => (
-            // <ProductItem
-            //   product={products.nodes[0]}
-            //   key={products.nodes[0].id}
-            // />
             <div className="relative">
               <ProductSwimlane
                 title="Related Products"
@@ -463,13 +484,20 @@ function ProductDetail({
   title,
   content,
   learnMore,
+  initState = false,
 }: {
   title: string;
   content: string;
   learnMore?: string;
+  initState?: boolean;
 }) {
   return (
-    <Disclosure key={title} as="div" className="grid w-full gap-2">
+    <Disclosure
+      key={title}
+      as="div"
+      className="grid w-full gap-2"
+      defaultOpen={initState}
+    >
       {({open}) => (
         <>
           <Disclosure.Button className="text-left">

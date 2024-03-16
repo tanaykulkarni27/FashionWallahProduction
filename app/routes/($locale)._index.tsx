@@ -92,7 +92,7 @@ export default function Homepage() {
   const skeletons = getHeroPlaceholder([{}, {}, {}]);
 
   return (
-    <div className='bg-red-500'>
+    <div className=''>
       {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
       )}

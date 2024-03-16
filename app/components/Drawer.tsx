@@ -88,10 +88,10 @@ export function Drawer({
                       : 'w-fit'
                   } text-left align-middle transition-all transform shadow-xl
                   ${openFrom === 'bottom' ? 'h-fit' : 'h-screen-dynamic'}
-                rounded-md backdrop-blur-md bg-white/30 flex flex-col justify-start items-center p-5`}
+                rounded-md backdrop-blur-md bg-white/30 flex flex-col justify-start items-center p-5  border-0`}
                 >
                   <header
-                    className={`sticky top-0 flex items-center px-6 h-nav sm:px-8 md:px-12 ${
+                    className={`sticky top-0 flex items-center px-6 h-nav sm:px-8 md:px-12 border-0 ${
                       heading ? 'justify-between' : 'justify-end'
                     }`}
                   >

@@ -75,10 +75,17 @@ export function ProductCard({
             <Text
               as="label"
               size="fine"
-              className={`absolute top-0 left-0 m-4 text-right p-1 bg-red-500 text-white ${cardLabel === '' || !cardLabel ? 'hidden':''}`}
+              className={`absolute top-0 left-0 mt-4 text-right p-1 bg-red-500 text-white ${cardLabel === '' || !cardLabel ? 'hidden':''}`}
             >
               {cardLabel}
+               {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) && (
+                  <CompareAtPrice
+                    className="font-extralight opacity-50 playfair-display bg-red-500 ml-2"
+                    data={compareAtPrice as MoneyV2}
+                  />
+                )}
             </Text>
+
             {/* QUICK ADD TO CART */}
             <button className='bg-contrast absolute bottom-0 right-0 m-4'>
               <IoAdd size={30} className='text-[#f5db8b] hover:rotate-180 transition duration-500' />
@@ -102,7 +109,7 @@ export function ProductCard({
                 />
                 {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) && (
                   <CompareAtPrice
-                    className="font-extralight opacity-50 playfair-display"
+                    className="font-extralight opacity-50 playfair-display bg-red-500"
                     data={compareAtPrice as MoneyV2}
                   />
                 )}

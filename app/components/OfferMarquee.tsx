@@ -10,16 +10,16 @@ type OfferMarqueProps = {
 
 export function OfferMarque({offers}: OfferMarqueProps) {
   return (
-    <div className="relative flex overflow-x-hidden bg-gradient-to-r from-[#575249] via-[#7c7567]  to-[#353a3a]">
-      <div className="py-6 animate-marquee whitespace-nowrap">
+    <div className="relative py-2 flex overflow-x-hidden bg-gradient-to-r from-[#575249] via-[#7c7567]  to-[#353a3a]">
+      <div className="animate-marquee whitespace-nowrap">
         {offers.map((offer) => (
-            <span className="mx-4 text-2xl" key={'marquee_'+offer.id}>{offer.text}</span>            
+            <span className="mx-4 text-lg text-shadow-mb text-shadow-gray-900 " key={'marquee_'+offer.id}>{offer.text}</span>            
         ))}
       </div>
 
-      <div className="absolute top-0 py-6 animate-marquee2 whitespace-nowrap">
+      <div className="absolute top-0 py-2 animate-marquee2 whitespace-nowrap">
         {offers.map((offer) => (
-            <span className="mx-4 text-2xl" key={'marquee_2_'+offer.id}>{offer.text}</span>            
+            <span className="mx-4 text-2xl  text-shadow-mb text-shadow-gray-900" key={'marquee_2_'+offer.id}>{offer.text}</span>            
         ))}
       </div>
     </div>

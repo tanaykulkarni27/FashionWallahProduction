@@ -264,7 +264,7 @@ function MobileHeader({
     <header
       role="banner"
       className={`text-contrast ${scrolled ? 'backdrop-blur-md bg-white/30':'stone_gray'} sticky
-      flex lg:hidden items-center h-nav z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8 z-50`}
+      flex lg:hidden items-center h-nav z-40 top-0 justify-between w-full leading-none gap-4 md:px-8 z-50`}
     >
       <div className="flex items-center justify-start w-full gap-4">
         <button
@@ -297,12 +297,20 @@ function MobileHeader({
           />
         </Form>
       </div>
-      <div>
+      <div className=''>
         <Link
           className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
           to="/"
         >
-            <img src={fwLogo}/>
+            {/* <img src={fwLogo} className='h-[5vh] w-auto'/> */}
+            <Image
+              src={fwLogo}
+              alt="Logo"
+              width={'1080px'}
+              height={'217px'}
+              className=""
+            />
+
         </Link>
       </div>
       <div className="flex items-center justify-end w-full gap-4">
@@ -358,7 +366,7 @@ function DesktopHeader({
           {/* Top level menu items */}
           {(menu?.items || []).map((item) => {
             const hasSubMenu = item.items && item.items.length > 0;
-            // console.log(item);
+            
             return hasSubMenu ? (
               <SubMenu items={item.items} title={item.title}/>
             ) : (

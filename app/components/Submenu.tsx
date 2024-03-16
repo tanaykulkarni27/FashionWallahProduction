@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import {NavLink} from '@remix-run/react';
 import type {ParentEnhancedMenuItem} from '~/lib/utils';
-
+import { IoIosArrowForward,IoIosArrowDown } from "react-icons/io";
 import {Link} from './Link';
 type SubMenuProps = {
   items: ParentEnhancedMenuItem[];
@@ -19,10 +19,13 @@ function SubMenu({items, title, side = null}: SubMenuProps) {
     <div className={`relative inline-block group px-5`} >
       <Link
         to="#"
-        className="font-bold footer_font"
+        className="footer_font "
         onMouseOver={handleMouseEnter}
       >
-        {title}
+        <div className='flex flex-row justify-center items-center'>
+          <span className=''> {title} </span>
+          {side !== 'right'?<IoIosArrowDown size={15} className='text-opacity-10'/>:<IoIosArrowForward size={15} className='text-opacity-10'/>}
+        </div>
       </Link>
       <div
         className={`absolute ${

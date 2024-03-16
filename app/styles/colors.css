@@ -61,6 +61,7 @@
 }
 
 .off_white_white {
+  /* background-color: ; */
   background: linear-gradient(to bottom, #fff, #ffefba 90%, white 100%);
   color: black;
 }
