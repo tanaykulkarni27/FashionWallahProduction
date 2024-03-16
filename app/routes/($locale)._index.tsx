@@ -22,6 +22,7 @@ import {
   HOME_BANNER_DATA,
 } from '../testData/ComponentTestingData';
 import {links} from '~/components/HomePage';
+import FeaturedCollection from '~/components/FeaturedCollection/FeaturedCollection';
 
 export const headers = routeHeaders;
 
@@ -100,6 +101,9 @@ export default function Homepage() {
         <BannerCarousel Banner_Data={HOME_BANNER_DATA}/>
       </div>
       <div className="w-full h-[100px] bg-gradient-to-b from-[#f0ab6e] to-white m-0"></div>
+      <div className="off_white_white w-full hiddenScroll p-3 min-h-[10vw]">
+        <FeaturedCollection />
+      </div>
       <div className="off_white_white">
         {featuredProducts && (
           <Suspense>
@@ -355,13 +359,6 @@ export const FEATURED_COLLECTIONS_QUERY = `#graphql
       nodes {
         id
         title
-        handle
-        image {
-          altText
-          width
-          height
-          url
-        }
       }
     }
   }

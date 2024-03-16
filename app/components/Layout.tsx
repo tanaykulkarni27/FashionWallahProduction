@@ -190,7 +190,10 @@ function MenuMobileNav({
               set_sub_menu(item.items);
             }}
           >
-            {item.title}
+            <div className="flex flex-row items-center justify-between w-full my-5" key={item.id}>
+              <span>{item.title}</span>
+              <FaAngleRight className="rounded-full bg-[#d3d3d3] text-black hover:bg-slate-950 hover:text-white" />
+            </div>
           </div>
         ) : (
           <div className="flex flex-row items-center justify-between w-full my-5" key={item.id}>

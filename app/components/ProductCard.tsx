@@ -104,12 +104,12 @@ export function ProductCard({
                 <Money
                   withoutTrailingZeros
                   data={price!}
-                  className="font-extralight bg-[#5d8bd7] mr-1"
+                  className="font-extralight bg-[#5d8bd7] mr-1 p-1"
                   style={{fontFamily: 'Playfair Display'}}
                 />
                 {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) && (
                   <CompareAtPrice
-                    className="font-extralight opacity-50 playfair-display bg-red-500"
+                    className="font-extralight opacity-50 playfair-display bg-red-500 p-1"
                     data={compareAtPrice as MoneyV2}
                   />
                 )}
