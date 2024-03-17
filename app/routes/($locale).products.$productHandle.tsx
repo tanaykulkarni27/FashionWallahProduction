@@ -40,13 +40,13 @@ import {ProductItem} from '~/components/ProductItem';
 
 import HorizontalCarousel from '~/components/hozizontalCarousel/HorizontalCarousel';
 import ShortProduct from '~/components/ShortProduct';
-import { GoShieldCheck } from 'react-icons/go';
-import { BsBookmarkStarFill, BsFire } from 'react-icons/bs';
-import { IoGiftSharp } from 'react-icons/io5';
-import { FaLeaf } from 'react-icons/fa';
-import { MdOutlineLocalShipping } from 'react-icons/md';
-import { IoMdCheckbox } from 'react-icons/io';
-import { CartLineQuantityAdjust } from '~/components/Cart';
+import {GoShieldCheck} from 'react-icons/go';
+import {BsBookmarkStarFill, BsFire} from 'react-icons/bs';
+import {IoGiftSharp} from 'react-icons/io5';
+import {FaLeaf} from 'react-icons/fa';
+import {MdOutlineLocalShipping} from 'react-icons/md';
+import {IoMdCheckbox} from 'react-icons/io';
+import {CartLineQuantityAdjust} from '~/components/Cart';
 
 export const headers = routeHeaders;
 
@@ -162,14 +162,14 @@ export default function Product() {
           <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:pt-nav hiddenScroll md:overflow-y-scroll flex justify-center items-center">
             <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
               <div className="grid gap-2">
-                <p className="whitespace-normal text-left text-3xl font-Poppins font-light" >
+                <p className="whitespace-normal text-left text-3xl font-Poppins font-light">
                   {title}
                 </p>
                 {vendor && (
-                    <Text className={'opacity-50 font-medium'}>{vendor}</Text>
+                  <Text className={'opacity-50 font-medium'}>{vendor}</Text>
                 )}
                 {vendor && (
-                    <Text className={'opacity-50 font-medium'}>SKU : CODE</Text>
+                  <Text className={'opacity-50 font-medium'}>SKU : CODE</Text>
                 )}
               </div>
               <Suspense fallback={<ProductForm variants={[]} />}>
@@ -221,7 +221,9 @@ export default function Product() {
                       />
                     </svg>
                   </div>
-                  <p className="w-full ml-2 text-xl text-bold">Additional Offer</p>
+                  <p className="w-full ml-2 text-xl text-bold">
+                    Additional Offer
+                  </p>
                 </div>
                 <div className="my-2 text-xl">
                   <h5>Buy any 2 → 10% off</h5>
@@ -230,37 +232,41 @@ export default function Product() {
                   <h5>Buy any 3 → 15% off</h5>
                 </div>
               </div>
-                      
+
               <div className="w-full rounded-md flex flex-col justify-between items-center bg-white/30 py-6 px-1">
-                <div className='text-lg'>Key Features</div>
-                <div className="flex flex-row justify-between items-center my-2">
-                  <div className='text-center flex flex-col justify-center items-center w-[25%]'>
-                    <GoShieldCheck size={30}/>
-                    <span className='text-lg'>Anti Tarnish</span>
+                <div className="text-lg">Key Features</div>
+
+                <div className="flex flex-row justify-center w-full mt-3">
+                  <div className='w-1/3 flex flex-col justify-start items-center text-center'>
+                    <GoShieldCheck size={30} />
+                    <span className="mt-2">Anti Tarnish</span>
                   </div>
-                  <div className='text-center flex flex-col justify-center items-center w-[25%]'>
-                    <BsFire size={30}/>
-                    <span className='text-lg'>Trending Design</span>
+                  <div className='w-1/3 flex flex-col justify-start items-center text-center'>
+                    <BsFire size={30} />
+                    <span className="mt-2">Trending Design</span>
                   </div>
-                  <div className='text-center flex flex-col justify-center items-center w-[25%]'>
-                    <IoMdCheckbox size={30}/>
-                    <span className='text-lg'>Top Notch Quality</span>
-                  </div>
-                </div>
-                <div className="flex flex-row justify-between items-center">
-                  <div className='text-center flex flex-col justify-center items-center w-[25%]'>
-                    <IoGiftSharp size={30}/>
-                    <span className='text-lg'>Perfect Gift Option</span>
-                  </div>
-                  <div className='text-center flex flex-col justify-center items-center w-[25%]'>
-                    <FaLeaf size={30}/>
-                    <span className='text-lg'>Hypoallergenic</span>
-                  </div>
-                  <div className='text-center flex flex-col justify-center items-center w-[25%]'>
-                    <MdOutlineLocalShipping size={30}/>
-                    <span className='text-lg'>Fastest Shipping</span>
+                  <div className='w-1/3 flex flex-col justify-start items-center text-center'>
+                    <IoMdCheckbox size={30} />
+                    <span className="mt-2">Top Notch Quality</span>
                   </div>
                 </div>
+                <div className="flex flex-row justify-center w-full">
+                  <div className='w-1/3 flex flex-col justify-start items-center text-center'>
+                    <IoGiftSharp size={30} />
+                    <span className="mt-2">Perfect Gift Option</span>
+                  </div>
+                  <div className='w-1/3 flex flex-col justify-start items-center text-center'>
+                    <FaLeaf size={30} />
+                    <span className="mt-2">Hypoallergenic</span>
+                  </div>
+                  <div className='w-1/3 flex flex-col justify-start items-center text-center'>
+                    <MdOutlineLocalShipping size={30} />
+                    <span className="mt-2">Fastest Shipping</span>
+                  </div>
+                  
+                </div>
+
+
               </div>
 
               <div className="grid gap-4 py-4">
@@ -514,7 +520,7 @@ export function ProductForm({
               </AddToCartButton>
             )}
             {!isOutOfStock && (
-              <button className='bg-[#5d8bd7] text-white rounded-md p-1'>
+              <button className="bg-[#5d8bd7] text-white rounded-md p-1">
                 <Text
                   as="span"
                   className="flex items-center justify-center gap-2"
