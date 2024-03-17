@@ -268,14 +268,14 @@ function ReviewsNRating({
   label: string[];
 }): React.JSX.Element {
   return (
-    <div className="text-center flex row_to_col justify-center items-center text-transparent bg-clip-text bg-gradient-to-b from-indigo-700 to-indigo-950 mb-15">
-      <div className="flex flex-col justify-center items-center mx-20 my-10">
+    <div className="text-center flex md:flex-row flex-col justify-center items-center text-transparent bg-clip-text bg-gradient-to-b from-indigo-700 to-indigo-950 md:mb-15 mb-4">
+      <div className="flex flex-col justify-center items-center mx-20 my-6">
         <p className="text-5xl">{count[0]}</p>
         <p className="text-xl">{label[0]} </p>
       </div>
       <div
         title=""
-        className="flex flex-col justify-center items-center mx-20 my-10"
+        className="flex flex-col justify-center items-center mx-20 my-6"
       >
         <p className="text-5xl">{count[1]}</p>
         <p className="text-xl">{label[1]}</p>
