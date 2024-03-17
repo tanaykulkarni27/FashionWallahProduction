@@ -14,7 +14,7 @@ export function OfferMarque({offers}: OfferMarqueProps) {
       <div className="animate-marquee whitespace-nowrap my-2">
         {offers.map((offer) => (
             <span className="text-[12px] text-shadow-mb text-shadow-gray-900" key={'marquee_'+offer.id}>
-              <span className="mx-4">·</span>
+              <span className="mx-4">&#8226;</span>
               {offer.text}
             </span>            
         ))}
@@ -23,7 +23,7 @@ export function OfferMarque({offers}: OfferMarqueProps) {
       <div className="absolute top-0 animate-marquee2 whitespace-nowrap my-2">
         {offers.map((offer) => (
             <span className="text-[12px] text-shadow-mb text-shadow-gray-900" key={'marquee_'+offer.id}>
-              <span className="mx-4">·</span>
+              <span className="mx-4">&#8226;</span>
               {offer.text}
             </span>            
         ))}
