@@ -147,13 +147,13 @@ function NoResults({
 }) {
   return (
     <>
-      {noResults && (
-        <Section padding="x">
-          <Text className="opacity-50">
-            No results, try a different search.
+      {noResults?(
+        <Section padding="x" className='h-[70vh] w-full bg-gradient-to-b from-[#d1d5db] to-white flex justify-center'>
+          <Text className="opacity-50 text-contrast text-center text-xl">
+            No Results Found {':('}
           </Text>
         </Section>
-      )}
+      ):
       <Suspense>
         <Await
           errorElement="There was a problem loading related products"
@@ -164,20 +164,20 @@ function NoResults({
             const {featuredCollections, featuredProducts} = result;
 
             return (
-              <>
-                <FeaturedCollections
+              <div className='h-[70vh] w-full bg-gradient-to-b from-[#d1d5db] to-white'>
+                {/* <FeaturedCollections
                   title="Trending Collections"
                   collections={featuredCollections}
                 />
                 <ProductSwimlane
                   title="Trending Products"
                   products={featuredProducts}
-                />
-              </>
+                /> */}
+              </div>
             );
           }}
         </Await>
-      </Suspense>
+      </Suspense>}
     </>
   );
 }
