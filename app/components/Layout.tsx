@@ -3,7 +3,7 @@ import {useWindowScroll} from 'react-use';
 import {Disclosure} from '@headlessui/react';
 import {Suspense, useEffect, useMemo, useState} from 'react';
 import {CartForm, Image} from '@shopify/hydrogen';
-import {FaWhatsapp, FaLinkedinIn, FaPinterestP,FaAngleLeft} from 'react-icons/fa';
+import {FaWhatsapp, FaFacebookSquare, FaYoutube} from 'react-icons/fa';
 import {FaTwitter, FaInstagram, FaAngleRight} from 'react-icons/fa6';
 import fwLogo from '~/public/logo.png';
 import {type LayoutQuery} from 'storefrontapi.generated';
@@ -172,7 +172,9 @@ function MenuMobileNav({
   const [show_sub_menu, set_sub_menu] = useState(menu?.items);
 
   return (
-    <nav className={`grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8 w-screen text-black overflow-y-scroll scrollbar-hide max-h-[70vh]`}>
+    <nav
+      className={`grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8 w-screen text-black overflow-y-scroll scrollbar-hide max-h-[70vh]`}
+    >
       <div
         className={`${show_sub_menu != menu?.items ? '' : 'hidden'}`}
         onClick={() => {
@@ -190,13 +192,19 @@ function MenuMobileNav({
               set_sub_menu(item.items);
             }}
           >
-            <div className="flex flex-row items-center justify-between w-full my-5" key={item.id}>
+            <div
+              className="flex flex-row items-center justify-between w-full my-5"
+              key={item.id}
+            >
               <span>{item.title}</span>
               <FaAngleRight className="rounded-full bg-[#d3d3d3] text-black hover:bg-slate-950 hover:text-white" />
             </div>
           </div>
         ) : (
-          <div className="flex flex-row items-center justify-between w-full my-5" key={item.id}>
+          <div
+            className="flex flex-row items-center justify-between w-full my-5"
+            key={item.id}
+          >
             <Link
               to={item.to}
               target={item.target}
@@ -222,11 +230,10 @@ function MenuMobileNav({
         );
       })}
       <div className="flex flex-row justify-between items-center w-full mb-3 mt-5">
-          <FaInstagram className="" />
-          <FaWhatsapp className="" />
-          <FaLinkedinIn className="" />
-          <FaPinterestP className="" />
-          <FaTwitter className="" />
+        <FaInstagram className="" />
+        <FaWhatsapp className="" />
+        <FaFacebookSquare />
+        <FaYoutube size={20} />
       </div>
       <div className="border-b-2 w-full"></div>
       <div className="mt-3 w-full">Account</div>
@@ -245,7 +252,6 @@ function MobileHeader({
   openCart: () => void;
   openMenu: () => void;
 }) {
-
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -266,15 +272,17 @@ function MobileHeader({
   return (
     <header
       role="banner"
-      className={`text-contrast ${scrolled ? 'backdrop-blur-md bg-white/30':'stone_gray'} sticky
-      flex lg:hidden items-center h-nav z-40 top-0 justify-between w-full leading-none gap-4 md:px-8 z-50`}
+      className={`text-contrast ${
+        scrolled ? 'backdrop-blur-md bg-white/30' : 'stone_gray'
+      } sticky
+      flex lg:hidden items-center h-nav z-40 top-0 justify-between w-full leading-none gap-4 md:px-8 z-50 px-3`}
     >
       <div className="flex items-center justify-start w-full gap-4">
         <button
           onClick={openMenu}
           className="relative flex items-center justify-center"
         >
-          <IconMenu width='w-[20px]' height='h-[20px]'/>
+          <IconMenu width="w-[35px]" height="h-[35px]" />
         </button>
         <Form
           method="get"
@@ -285,7 +293,7 @@ function MobileHeader({
             type="submit"
             className="relative flex items-center justify-center"
           >
-            <IconSearch width='w-[20px]' height='h-[20px]' />
+            <IconSearch width="w-[30px]" height="h-[30px]" />
           </button>
           <Input
             className={
@@ -300,20 +308,19 @@ function MobileHeader({
           />
         </Form>
       </div>
-      <div className=''>
+      <div className="">
         <Link
           className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
           to="/"
         >
-            {/* <img src={fwLogo} className='h-[5vh] w-auto'/> */}
-            <Image
-              src={fwLogo}
-              alt="Logo"
-              width={'1080px'}
-              height={'217px'}
-              className=""
-            />
-
+          {/* <img src={fwLogo} className='h-[5vh] w-auto'/> */}
+          <Image
+            src={fwLogo}
+            alt="Logo"
+            width={'1080px'}
+            height={'217px'}
+            className=""
+          />
         </Link>
       </div>
       <div className="flex items-center justify-end w-full gap-4">
@@ -357,7 +364,9 @@ function DesktopHeader({
     <header
       role="banner"
       className={`navbar_element sticky
-          text-contrast ${scrolled ? 'backdrop-blur-md bg-white/30' : 'stone_gray'} 
+          text-contrast ${
+            scrolled ? 'backdrop-blur-md bg-white/30' : 'stone_gray'
+          } 
           hidden h-nav lg:flex items-center transition duration-300 z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8 z-50`}
     >
       <div className="flex items-center gap-12">
@@ -365,13 +374,13 @@ function DesktopHeader({
           {/* {title} */}
           <img src={fwLogo} className="w-80" alt="" />
         </Link>
-        <nav className="flex gap-8">
+        <nav className="flex gap-6 font-bold">
           {/* Top level menu items */}
           {(menu?.items || []).map((item) => {
             const hasSubMenu = item.items && item.items.length > 0;
-            
+
             return hasSubMenu ? (
-              <SubMenu items={item.items} title={item.title}/>
+              <SubMenu items={item.items} title={item.title} />
             ) : (
               <div>
                 <Link
@@ -475,7 +484,7 @@ function Badge({
   const BadgeCounter = useMemo(
     () => (
       <>
-        <IconBag width='w-[20px]' height='h-[20px]'/>
+        <IconBag width="w-[42px]" height="h-[42px]" />
         <div
           className={`${
             dark
@@ -537,7 +546,7 @@ function Footer({menu}: {menu?: EnhancedMenu}) {
       </div>
       <ContactSection />
       <FooterMenu menu={menu} />
-      <div className="w-full flex flex-row items-center lg:justify-end justify-between my-5 px-10">
+      <div className="w-full flex flex-row items-center lg:justify-center justify-between my-5 px-10">
         <VisaCardIcon />
         <MasterCardIcon />
         <GpayIcon />
@@ -545,7 +554,7 @@ function Footer({menu}: {menu?: EnhancedMenu}) {
       </div>
       {/* <CountrySelector /> */}
       <div
-        className={`self-end pt-8 opacity-50 md:col-span-2 lg:col-span-${itemsCount}`}
+        className={`self-center pt-8 opacity-50 md:col-span-2 lg:col-span-${itemsCount}`}
       >
         &copy; {new Date().getFullYear()} Fashion Wallah. All rights reserved.
       </div>
@@ -623,13 +632,15 @@ const ContactSection = () => {
         </div>
       </div>
       <div className="text-gray-200 text-md my-3 lg:w-1/3 w-2/3">
-        Discover a wide range of fashion accessories for women & men like
-        natural stone bracelets, pearl necklaces, stainless steel rings and
-        scrunchies, with a range of aesthetics to mirror the versatility of your
-        modern wardrobe. Offering gift wrap and express delivery across India,
-        to make Mesmerize India your go to fashion accessory brand for shopping
-        affordable jewellery, whether it is for yourself or your loved ones. Be
-        bold. Stay fresh.
+        Fashionwallah is an elegant e-commerce destination specializing in
+        exquisite jewelry pieces, offering a curated selection of trendy and
+        timeless designs to elevate any ensemble. From statement necklaces to
+        delicate bracelets, Fashionwallah caters to fashion-forward individuals
+        seeking to adorn themselves with quality craftsmanship and unique pieces
+        that reflect their personal style. With a focus on both contemporary
+        trends and classic elegance, Fashionwallah aims to be the go-to
+        destination for those seeking to accessorize with sophistication and
+        flair
       </div>
     </div>
   );
@@ -642,9 +653,7 @@ function FooterMenu({menu}: {menu?: EnhancedMenu}) {
   };
 
   return (
-    <div
-      className="w-full flex justify-center items-center stone_gray text-contrast"
-    >
+    <div className="w-full flex justify-center items-center stone_gray text-contrast">
       {(menu?.items || []).map((item) => (
         <section
           key={item.id}

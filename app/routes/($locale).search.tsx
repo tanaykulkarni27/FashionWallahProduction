@@ -86,7 +86,7 @@ export default function Search() {
         <div className='w-full flex flex-row justify-end items-center'><Button className={'text-base bg-transparent text-contrast'} onClick={go_back}>X</Button></div>
         <Form method="get" className="relative flex w-full text-heading">
           <Input
-            defaultValue={searchTerm}
+            // defaultValue={searchTerm}
             name="q"
             placeholder="Search…"
             type="search"

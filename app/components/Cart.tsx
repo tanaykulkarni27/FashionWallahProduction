@@ -254,7 +254,7 @@ function CartLineItem({line}: {line: CartLine}) {
   return (
     <li
       key={id}
-      className="flex gap-4"
+      className="flex gap-3"
       style={{
         // Hide the line item if the optimistic data action is remove
         // Do not remove the form from the DOM

@@ -163,10 +163,12 @@ export default function Collection() {
         )}
       </PageHeader> */}
       <Section>
+        <div className='text-center text-2xl'>{collection.title}</div>
         <SortFilter
           filters={collection.products.filters as Filter[]}
           appliedFilters={appliedFilters}
           collections={collections}
+          
         >
           <Pagination connection={collection.products}>
             {({

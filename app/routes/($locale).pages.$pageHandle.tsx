@@ -40,8 +40,9 @@ export default function Page() {
 
   return (
     <>
+    {/* page.title */}
       <PageHeader
-        heading={page.title}
+        heading={''}
         className="page flex justify-center items-center"
       >
         <div

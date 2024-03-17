@@ -61,8 +61,12 @@
   }
 }
 
-.font-Montserrat {
-  font-family: 'Montserrat';
+.font-Nunito {
+  font-family: 'Nunito';
+}
+
+.font-Poppins {
+  font-family: 'Poppins',sans-serif;
 }
 
 shop-pay-button {

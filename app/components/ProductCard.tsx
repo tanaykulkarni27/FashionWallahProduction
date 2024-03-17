@@ -23,7 +23,7 @@ export function ProductCard({
   onClick?: () => void;
   quickAdd?: boolean;
 }) {
-  let cardLabel;
+  let cardLabel = 'Upto 30% off';
 
   const cardProduct: Product = product?.variants
     ? (product as Product)
@@ -75,15 +75,16 @@ export function ProductCard({
             <Text
               as="label"
               size="fine"
-              className={`absolute top-0 left-0 mt-4 text-right p-1 bg-red-500 text-white ${cardLabel === '' || !cardLabel ? 'hidden':''}`}
+              className={`absolute top-0 left-0 text-right p-1 bg-red-700 text-white ${cardLabel === '' || !cardLabel ? 'hidden':''}`}
             >
-              {cardLabel}
-               {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) && (
+              {'Upto 30% off'}
+              {/* {cardLabel} */}
+               {/* {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) && (
                   <CompareAtPrice
                     className="font-extralight opacity-50 playfair-display bg-red-500 ml-2"
                     data={compareAtPrice as MoneyV2}
                   />
-                )}
+                )} */}
             </Text>
 
             {/* QUICK ADD TO CART */}
@@ -91,7 +92,7 @@ export function ProductCard({
               <IoAdd size={30} className='text-[#f5db8b] hover:rotate-180 transition duration-500' />
             </button>
           </div>
-          <div className="grid gap-1 flex flex-col justify-center items-center mt-1">
+          <div className="grid gap-1 flex flex-col justify-center items-center">
             <Text
               className="overflow-hidden text-sm text-center w-100 line-clamp-2 decoration-dashed"
               as="h3"
@@ -105,11 +106,11 @@ export function ProductCard({
                   withoutTrailingZeros
                   data={price!}
                   className="font-extralight bg-[#5d8bd7] mr-1 p-1"
-                  style={{fontFamily: 'Playfair Display'}}
+                  // style={{fontFamily: 'Playfair Display'}}
                 />
                 {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) && (
                   <CompareAtPrice
-                    className="font-extralight opacity-50 playfair-display bg-red-500 p-1"
+                    className="font-extralight opacity-100 p-1"
                     data={compareAtPrice as MoneyV2}
                   />
                 )}
@@ -159,7 +160,7 @@ function CompareAtPrice({
   const {currencyNarrowSymbol, withoutTrailingZerosAndCurrency} =
     useMoney(data);
 
-  const styles = clsx('strike', className);
+  const styles = clsx('line-through', className);
 
   return (
     <span className={styles}>

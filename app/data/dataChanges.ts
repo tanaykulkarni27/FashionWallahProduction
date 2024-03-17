@@ -2,19 +2,19 @@
 export const OFFER_DATA = [
   {
     id: 'offer-1',
-    text: 'Free shipping on orders over $50!',
+    text: 'Free Shipping on orders above 499/-',
   },
   {
     id: 'offer-2',
-    text: '20% off sitewide for new customers!',
+    text: 'Upto 30% off sitewide',
   },
   {
     id: 'offer-3',
-    text: 'Flash sale: 50% off select items!',
+    text: 'Additional discounts on every add on',
   },
   {
     id: 'offer-4',
-    text: 'Up to 70% off clearance items!',
+    text: 'Same day dispatching',
   },
 ];
 

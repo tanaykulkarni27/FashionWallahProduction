@@ -27,7 +27,7 @@ export default function BannerCarousel({ Banner_Data }: CarouselProps) {
         show={index === activeIndex}
         key={item.image.id}
         as="div"
-        className="absolute w-full h-screen top-0 right-0"
+        className="absolute w-full h-[90vh] top-0 right-0"
         enter="transition-opacity duration-1000"
         enterFrom="opacity-0"
         enterTo="opacity-100"
@@ -35,17 +35,17 @@ export default function BannerCarousel({ Banner_Data }: CarouselProps) {
         leaveFrom="opacity-0"
         leaveTo="opacity-0"
       >
-        <div className={'m-0 w-full h-full flex flex-row justify-center items-start ' + item.class}>
+        <div className={'m-0 w-full h-full flex flex-row justify-center items-center ' + item.class}>
           <div className='relative'>
             <img
               src={item.image.url}
-              className="rounded-2xl w-[90vw] aspect-[9/16] lg:aspect-[16/9] max-h-[90vh]"
+              className="rounded-2xl w-[90vw] h-[90vh]"
             />
             <div className='flex flex-row justify-center items-center absolute bottom-[10px] right-[10px]'>
               {
                 Banner_Data.map((item,index)=>(<div 
                   onClick={()=>go_at(index)}
-                  className={`m-1 ${index===activeIndex?'custom_dot_active':'custom_dot'}`}>
+                  className={`m-1 mb-0 ${index===activeIndex?'custom_dot_active':'custom_dot'}`}>
                   </div>))
               }
             </div>

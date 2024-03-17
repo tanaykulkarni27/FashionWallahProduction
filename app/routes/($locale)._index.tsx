@@ -147,12 +147,16 @@ export default function Homepage() {
           />
         </div>
       </div>
-      <div className="taupe-dark p-3">
-        <p className="text-2xl mb-2">Shop by collections</p>
+      <div className="taupe-dark py-3">
+        <div className='flex flex-row justify-center items-center'>
+          <marquee className="text-2xl mb-2 text-center w-fit">
+            Shop by collections
+          </marquee>
+        </div>
 
         {/* EARRINGS COLLECTION  */}
-        <div>
-          <p className="text-3xl mb-2">Earrings</p>
+        <div className='text-center mt-4'>
+          <p className="text-2xl mb-2 text-center w-full">Earrings</p>
           {featuredProducts && (
             <Suspense>
               <Await resolve={featuredProducts}>
@@ -177,7 +181,7 @@ export default function Homepage() {
 
         {/* Immitation Jwellery COLLECTION  */}
         <div>
-          <p className="text-3xl mb-2">Immitation Jwellery</p>
+          <p className="text-3xl mb-2 w-full text-center">Necklaces</p>
           {featuredProducts && (
             <Suspense>
               <Await resolve={featuredProducts}>
@@ -202,7 +206,7 @@ export default function Homepage() {
 
         {/* Bangales COLLECTION  */}
         <div>
-          <p className="text-3xl mb-2">Bangales</p>
+          <p className="text-3xl mb-2 text-center w-full">Mangalsutra</p>
           {featuredProducts && (
             <Suspense>
               <Await resolve={featuredProducts}>

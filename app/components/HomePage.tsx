@@ -173,10 +173,10 @@ function RecommendedProducts({products}) {
                   <Image data={product.images.nodes[0]} aspectRatio="1/1" />
                   <div className="flex flex-col justify-center items-center">
                     <p className="text-lg">{product.title}</p>
-                    <p className="text-sm text-extralight">
+                    <p className="text-sm font-extralight">
                       <Money
                         data={product.priceRange.minVariantPrice}
-                        className="text-extralight"
+                        className="font-extralight"
                       />
                     </p>
                   </div>

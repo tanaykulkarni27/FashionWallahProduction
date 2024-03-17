@@ -40,6 +40,12 @@ import {ProductItem} from '~/components/ProductItem';
 
 import HorizontalCarousel from '~/components/hozizontalCarousel/HorizontalCarousel';
 import ShortProduct from '~/components/ShortProduct';
+import { GoShieldCheck } from 'react-icons/go';
+import { BsBookmarkStarFill, BsFire } from 'react-icons/bs';
+import { IoGiftSharp } from 'react-icons/io5';
+import { FaLeaf } from 'react-icons/fa';
+import { MdOutlineLocalShipping } from 'react-icons/md';
+import { IoMdCheckbox } from 'react-icons/io';
 
 export const headers = routeHeaders;
 
@@ -143,7 +149,7 @@ export default function Product() {
   const {shippingPolicy, refundPolicy} = shop;
 
   return (
-    <div className="taupe-dark">
+    <div className="taupe-dark ">
       <Section className="px-0 md:px-8 lg:px-12">
         <div className="grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
           <ProductGallery
@@ -151,15 +157,19 @@ export default function Product() {
             className="w-full lg:col-span-2"
           />
           <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:pt-nav hiddenScroll md:overflow-y-scroll flex justify-center items-center">
+          {/* <div className="px-6">
+              {vendor && (
+                  <Text className={'opacity-50 font-medium'}>{vendor}</Text>
+              )}
+              <Text className={'opacity-50 font-medium'}>SKU : {vendor}</Text>
+            </div> */}
             <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
               <div className="grid gap-2">
-                <Heading as="h1" className="whitespace-normal text-left">
+                <p className="whitespace-normal text-left text-3xl font-Poppins font-light" >
                   {title}
-                </Heading>
-                {vendor && (
-                  <Text className={'opacity-50 font-medium'}>{vendor}</Text>
-                )}
+                </p>
               </div>
+              
               <Suspense fallback={<ProductForm variants={[]} />}>
                 <Await
                   errorElement="There was a problem loading related products"
@@ -209,13 +219,45 @@ export default function Product() {
                       />
                     </svg>
                   </div>
-                  <p className="w-full ml-2 text-xl text-bold">Offer</p>
+                  <p className="w-full ml-2 text-xl text-bold">Additional Offer</p>
                 </div>
                 <div className="my-2 text-xl">
-                  <h5>Buy any 2 → 15% off</h5>
+                  <h5>Buy any 2 → 10% off</h5>
                 </div>
                 <div className="my-2 text-xl">
-                  <h5>Buy any 3 → 20% off</h5>
+                  <h5>Buy any 3 → 15% off</h5>
+                </div>
+              </div>
+                      
+              <div className="w-full rounded-md flex flex-col justify-between items-center bg-white/30 py-6 px-1">
+                <div className='text-lg'>Key Features</div>
+                <div className="flex flex-row justify-between items-center my-2">
+                  <div className='text-center flex flex-col justify-center items-center w-[25%]'>
+                    <GoShieldCheck size={30}/>
+                    <span className='text-lg'>Anti Tarnish</span>
+                  </div>
+                  <div className='text-center flex flex-col justify-center items-center w-[25%]'>
+                    <BsFire size={30}/>
+                    <span className='text-lg'>Trending Design</span>
+                  </div>
+                  <div className='text-center flex flex-col justify-center items-center w-[25%]'>
+                    <IoMdCheckbox size={30}/>
+                    <span className='text-lg'>Top Notch Quality</span>
+                  </div>
+                </div>
+                <div className="flex flex-row justify-between items-center">
+                  <div className='text-center flex flex-col justify-center items-center w-[25%]'>
+                    <IoGiftSharp size={30}/>
+                    <span className='text-lg'>Perfect Gift Option</span>
+                  </div>
+                  <div className='text-center flex flex-col justify-center items-center w-[25%]'>
+                    <FaLeaf size={30}/>
+                    <span className='text-lg'>Hypoallergenic</span>
+                  </div>
+                  <div className='text-center flex flex-col justify-center items-center w-[25%]'>
+                    <MdOutlineLocalShipping size={30}/>
+                    <span className='text-lg'>Fastest Shipping</span>
+                  </div>
                 </div>
               </div>
 
@@ -467,11 +509,19 @@ export function ProductForm({
               </AddToCartButton>
             )}
             {!isOutOfStock && (
-              <ShopPayButton
-                width="100%"
-                variantIds={[selectedVariant?.id!]}
-                storeDomain={storeDomain}
-              />
+              <button className='bg-[#5d8bd7] text-white rounded-md p-1'>
+                <Text
+                  as="span"
+                  className="flex items-center justify-center gap-2"
+                >
+                  <span>Buy Now</span>
+                </Text>
+              </button>
+              // <ShopPayButton
+              //   width="100%"
+              //   variantIds={[selectedVariant?.id!]}
+              //   storeDomain={storeDomain}
+              // />
             )}
           </div>
         )}
