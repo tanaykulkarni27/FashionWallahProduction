@@ -46,6 +46,7 @@ import { IoGiftSharp } from 'react-icons/io5';
 import { FaLeaf } from 'react-icons/fa';
 import { MdOutlineLocalShipping } from 'react-icons/md';
 import { IoMdCheckbox } from 'react-icons/io';
+import { CartLineQuantityAdjust } from '~/components/Cart';
 
 export const headers = routeHeaders;
 
@@ -54,6 +55,8 @@ export async function loader({params, request, context}: LoaderFunctionArgs) {
   invariant(productHandle, 'Missing productHandle param, check route filename');
 
   const selectedOptions = getSelectedProductOptions(request);
+
+  console.log(productHandle);
 
   const {shop, product} = await context.storefront.query(PRODUCT_QUERY, {
     variables: {
@@ -157,19 +160,18 @@ export default function Product() {
             className="w-full lg:col-span-2"
           />
           <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:pt-nav hiddenScroll md:overflow-y-scroll flex justify-center items-center">
-          {/* <div className="px-6">
-              {vendor && (
-                  <Text className={'opacity-50 font-medium'}>{vendor}</Text>
-              )}
-              <Text className={'opacity-50 font-medium'}>SKU : {vendor}</Text>
-            </div> */}
             <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
               <div className="grid gap-2">
                 <p className="whitespace-normal text-left text-3xl font-Poppins font-light" >
                   {title}
                 </p>
+                {vendor && (
+                    <Text className={'opacity-50 font-medium'}>{vendor}</Text>
+                )}
+                {vendor && (
+                    <Text className={'opacity-50 font-medium'}>SKU : CODE</Text>
+                )}
               </div>
-              
               <Suspense fallback={<ProductForm variants={[]} />}>
                 <Await
                   errorElement="There was a problem loading related products"
@@ -464,6 +466,9 @@ export function ProductForm({
             );
           }}
         </VariantSelector>
+
+        {/* <CartLineQuantityAdjust /> */}
+
         {selectedVariant && (
           <div className="grid items-stretch gap-4">
             {isOutOfStock ? (

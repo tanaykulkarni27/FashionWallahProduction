@@ -168,7 +168,7 @@ function CartLines({
     y > 0 ? 'border-t' : '',
     layout === 'page'
       ? 'flex-grow md:translate-y-4'
-      : 'px-6 pb-6 sm-max:pt-2 overflow-auto transition md:px-12',
+      : 'px-2 pb-6 sm-max:pt-2 overflow-auto transition md:px-8',
   ]);
 
   return (
@@ -177,7 +177,7 @@ function CartLines({
       aria-labelledby="cart-contents"
       className={className}
     >
-      <ul className="grid gap-6 md:gap-10">
+      <ul className="grid gap-4 md:gap-10">
         {currentLines.map((line) => (
           <CartLineItem key={line.id} line={line as CartLine} />
         ))}
@@ -254,14 +254,15 @@ function CartLineItem({line}: {line: CartLine}) {
   return (
     <li
       key={id}
-      className="flex gap-3"
+      className="flex justify-start items-start w-full"
       style={{
         // Hide the line item if the optimistic data action is remove
         // Do not remove the form from the DOM
         display: optimisticData?.action === 'remove' ? 'none' : 'flex',
       }}
     >
-      <div className="flex-shrink">
+      {/* IMAGE */}
+      <div className="flex-shrink lg:mr-1">
         {merchandise.image && (
           <Image
             width={110}
@@ -272,10 +273,9 @@ function CartLineItem({line}: {line: CartLine}) {
           />
         )}
       </div>
-
-      <div className="flex justify-between flex-grow">
-        <div className="grid gap-2">
-          <Heading as="h3" size="copy">
+      <div className="flex justify-between flex-grow max-w-[70%]">
+        <div className="grid lg:gap-2 gap-1">
+          <Heading as="h3" size="copy" className=''>
             {merchandise?.product?.handle ? (
               <Link to={`/products/${merchandise.product.handle}`}>
                 {merchandise?.product?.title || ''}
@@ -329,7 +329,7 @@ function ItemRemoveButton({lineId}: {lineId: CartLine['id']}) {
   );
 }
 
-function CartLineQuantityAdjust({line}: {line: CartLine}) {
+export function CartLineQuantityAdjust({line}: {line: CartLine}) {
   const optimisticId = line?.id;
   const optimisticData = useOptimisticData<OptimisticData>(optimisticId);
 
