@@ -184,16 +184,17 @@ export default function Homepage() {
           <div className='text-center mt-4' key={"hello world " + index}>
               <p className="text-2xl mb-2 text-center w-full">{sub_collection.title}</p>
               <div className="swimlane hiddenScroll md:pb-8 md:scroll-px-8 lg:scroll-px-12 md:px-8 lg:px-12 z-0">
-                {sub_collection.sub_collections.map((collection)=>(<CollectionCard collection={collection.node}/>))}
+                {sub_collection.sub_collections.map((collection,index)=>(<CollectionCard collection={collection.node} key={index + "COLLECTION_CARD"}/>))}
               </div>
-            </div>)
+            </div>
+            )
         )}
         {shop_by_collection.map((collection,index)=>(
           <div className='text-center mt-4' key={"hello world " + index}>
             <p className="text-2xl mb-2 text-center w-full">{collection.title}</p>
             <ProductSwimlane
               products={collection.products}
-              title={null} // no need of collection name as it is mentioned above
+              title={null}
             />
             </div>)
         )}

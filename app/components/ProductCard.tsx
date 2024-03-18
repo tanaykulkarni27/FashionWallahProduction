@@ -78,8 +78,8 @@ export function ProductCard({
               size="fine"
               className={`absolute top-0 left-0 text-right p-1 bg-red-700 text-white ${cardLabel === '' || !cardLabel ? 'hidden':''}`}
             >
-              {/* {'Upto 30% off'} */}
-              {cardLabel}
+              {'Upto 30% off'}
+              {/* {cardLabel} */}
                {/* {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) && (
                   <CompareAtPrice
                     className="font-extralight opacity-50 playfair-display bg-red-500 ml-2"
