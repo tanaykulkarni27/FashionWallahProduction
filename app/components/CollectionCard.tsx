@@ -29,7 +29,7 @@ export default function CollectionCard({
 }) {
   return (
   <Link
-        className="sm:w-[35vw] lg:w-[25vw] md:w-[30vw] z-0 group/item"
+        className="w-[73vw] md:w-[35vw] lg:w-[28vw] z-0 flex flex-col gap-2 group/item"
         key={collection.id}
         prefetch="intent"
         to={`/collections/${collection.handle}`}
@@ -38,10 +38,12 @@ export default function CollectionCard({
           <div className={'relative product-item'}>
               <Image
                 alt={collection.image.altText || collection.title}
-                sizes="(min-width: 64em) 25vw, (min-width: 48em) 30vw, 35vw"
+                // sizes="(min-width: 64em) 25vw, (min-width: 48em) 30vw, 35vw"
                 aspectRatio="1/1"
                 data={collection.image}
                 className="object-cover fadeIn w-full"
+                width={collection.image.width}
+                height={collection.image.height}
               />
               <div className="flex flex-col justify-start items-start absolute bottom-0 left-0 z-40 m-3">
                 <FaChevronCircleRight className="text-white hidden group-hover/item:block" />
