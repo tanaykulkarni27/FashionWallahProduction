@@ -23,6 +23,7 @@ import {
 } from '../testData/ComponentTestingData';
 import {links} from '~/components/HomePage';
 import FeaturedCollection from '~/components/FeaturedCollection/FeaturedCollection';
+import CollectionCard from '~/components/CollectionCard';
 
 export const headers = routeHeaders;
 
@@ -62,12 +63,6 @@ export async function loader({params, context}: LoaderFunctionArgs) {
         handle:'mangalsutra',
         title:'Mangalsutra'
       },
-      {
-        handle:'bangles-2-6',
-        title:'Bangles'
-      },
-      {handle:'oxidised-necklace',
-      title:'Oxidised Necklace'}
     ]
     const shop_by_collection = [] 
     for(const collection_name of shop_by_collection_names){
@@ -80,10 +75,19 @@ export async function loader({params, context}: LoaderFunctionArgs) {
       })
     }
 
+// All_Collections
+    const COLLECTION_TYPES = []
+    for(var _COLLECTION of ['Necklace','Earrings']){
+      const sub_collection = await context.storefront.query(All_Collections,{
+        variables:{MainType:_COLLECTION}});
+        COLLECTION_TYPES.push({title:_COLLECTION,sub_collections:sub_collection.collections.edges});
+    }
+
 
   const seo = seoPayload.home();
 
   return defer({
+    COLLECTION_TYPES,
     shop_by_collection,
     featured_collection,
     shop,
@@ -133,10 +137,11 @@ export default function Homepage() {
     tertiaryHero,
     featuredProducts,
     featured_collection,
-    shop_by_collection
+    shop_by_collection,
+    COLLECTION_TYPES
   } = useLoaderData<typeof loader>();
 
-  // console.log(shop_by_collection);
+  // console.log(COLLECTION_TYPES);
 
   // TODO: skeletons vs placeholders
   const skeletons = getHeroPlaceholder([{}, {}, {}]);
@@ -209,6 +214,14 @@ export default function Homepage() {
               products={collection.products}
               title={null} // no need of collection name as it is mentioned above
             />
+            </div>)
+        )}
+        {COLLECTION_TYPES.map((sub_collection,index)=>(
+          <div className='text-center mt-4' key={"hello world " + index}>
+              <p className="text-2xl mb-2 text-center w-full">{sub_collection.title}</p>
+              <div className="swimlane hiddenScroll md:pb-8 md:scroll-px-8 lg:scroll-px-12 md:px-8 lg:px-12 z-0">
+                {sub_collection.sub_collections.map((collection)=>(<CollectionCard collection={collection.node}/>))}
+              </div>
             </div>)
         )}
       </div>
@@ -355,7 +368,7 @@ const COLLECTION_QUERY = `#graphql
 query AllProducts($handle: String!) {
   collection(handle: $handle) {
     handle
-    products(first: 4) {
+    products(first: 100) {
       nodes {
           ...ProductCard
         }
@@ -365,14 +378,21 @@ query AllProducts($handle: String!) {
 ${PRODUCT_CARD_FRAGMENT}
 `;
 
-const All_Collection_names = `#graphql
-query AllProducts {
-  collections(first:250){
-    edges{
-      node{
+const All_Collections = `#graphql
+query AllProducts($MainType:String){
+  collections(first: 250, query: $MainType) {
+    edges {
+      node {
         id
         title
         handle
+        image{
+          id
+          url
+          altText
+          width
+          height
+        }
       }
     }
   }
