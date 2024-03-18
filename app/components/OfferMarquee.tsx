@@ -13,7 +13,7 @@ export function OfferMarque({offers}: OfferMarqueProps) {
     <div className="relative flex overflow-x-hidden bg-gradient-to-r from-[#575249] via-[#7c7567] to-[#353a3a]">
       <div className="animate-marquee whitespace-nowrap my-2">
         {offers.map((offer) => (
-            <span className="text-[12px] text-shadow-mb text-shadow-gray-900" key={'marquee_'+offer.id}>
+            <span className="text-[12px] text-shadow-mb text-shadow-gray-900 text-bold" key={'marquee_'+offer.id}>
               <span className="mx-4">&#8226;</span>
               {offer.text}
             </span>            
@@ -22,7 +22,7 @@ export function OfferMarque({offers}: OfferMarqueProps) {
 
       <div className="absolute top-0 animate-marquee2 whitespace-nowrap my-2">
         {offers.map((offer) => (
-            <span className="text-[12px] text-shadow-mb text-shadow-gray-900" key={'marquee_'+offer.id}>
+            <span className="text-[12px] text-shadow-mb text-shadow-gray-900 text-bold" key={'marquee_'+offer.id}>
               <span className="mx-4">&#8226;</span>
               {offer.text}
             </span>            
