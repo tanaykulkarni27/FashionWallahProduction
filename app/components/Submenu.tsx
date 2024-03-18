@@ -12,36 +12,41 @@ type SubMenuProps = {
 function SubMenu({items, title, side = null}: SubMenuProps) {
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
   const handleMouseEnter = () => {
-    setSubMenuOpen(!isSubMenuOpen);
+    setSubMenuOpen(true);
+  };
+  const handleMouseOut = () => {
+    setSubMenuOpen(false);
   };
 
   return (
-    <div className={`relative inline-block group px-5`} >
+    <div className={`relative group w-full`} 
+        onMouseOver={handleMouseEnter}
+        onMouseOut={handleMouseOut}>
+ 
       <Link
         to="#"
-        className="footer_font "
-        onMouseOver={handleMouseEnter}
+        className=""
       >
-        <div className='flex flex-row justify-center items-center'>
-          <span className=''> {title} </span>
-          {side !== 'right'?<IoIosArrowDown size={15} className='text-opacity-10'/>:<IoIosArrowForward size={15} className='text-opacity-10'/>}
+        <div className={`flex flex-row justify-between items-center text-contrast ${side != null && 'text-sm py-2 px-4 '} text-left w-full `}>
+          <span className=' text-center w-full'> {title} </span>
+          {side !== 'right'?<IoIosArrowDown size={15} className='text-opacity-10'/>:<IoIosArrowForward size={15} className='text-opacity-10'/>} 
         </div>
       </Link>
       <div
-        className={`absolute ${
-          isSubMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-        } transition duration-300 ease-in-out
-        ${side==='right'?'top-0 left-full':'mt-2 space-y-2 '} divide-y divide-contrast shadow-lg  font-normal stone_gray`}
-      >
+        className={`
+        ${isSubMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} transition duration-300 ease-in-out
+        absolute ${side === 'right' ? 'top-0 left-full' : 'top-full left-0 right-0'}
+        shadow-lg font-normal stone_gray`}>
         {items.map((subItem) => {
-          return subItem.items?(<SubMenu items={subItem?.items} title={subItem.title} side={'right'} />):(
+          return (subItem.items && subItem.items.length > 0)?(<SubMenu items={subItem?.items} title={subItem.title} side={'right'} />):(
             <NavLink
               key={subItem.id}
               to={subItem.url}
-              className="block px-4 py-2 text-sm text-contrast text-center"
+              className="block text-sm py-2 px-4 text-contrast text-left"
               style={activeLinkStyle}
             >
               {subItem.title}
+              <span></span>
             </NavLink>
           );
         })}
