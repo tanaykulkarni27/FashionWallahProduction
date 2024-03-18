@@ -78,9 +78,9 @@ export default function FeaturedCollection({FeaturedCollection}: {
                 leave="transition-transform duration-1000"
                 leaveFrom={current_anim[2]}
                 leaveTo={current_anim[3]}
-                className={'w-full'}
+                className={'w-full absolute bottom-0 top-0'}
               >
-                <div className="w-full absolute top-0 left-0 text-center z-0 text-xl m-4">
+                <div className="w-full absolute bottom-0 top-0 left-0 text-center z-0 text-xl m-4 flex justify-center items-center">
                   {item.title}
                 </div>
               </Transition>

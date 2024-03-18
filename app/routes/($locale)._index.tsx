@@ -18,7 +18,6 @@ import {InfiniteMarquee} from '~/components/UIAcernity/InfiniteMarquee';
 
 import {
   TEST_RATING_DATA,
-  TEST_COLLECTIONS,
   HOME_BANNER_DATA,
 } from '../testData/ComponentTestingData';
 import {links} from '~/components/HomePage';
@@ -58,31 +57,23 @@ export async function loader({params, context}: LoaderFunctionArgs) {
   }
 
 // SHOP BY COLLECTION CODE
-    const shop_by_collection_names = [
-      {
-        handle:'mangalsutra',
-        title:'Mangalsutra'
-      },
-    ]
     const shop_by_collection = [] 
-    for(const collection_name of shop_by_collection_names){
-      var products_of_collection = await context.storefront.query(COLLECTION_QUERY,{
-        variables:{handle:collection_name.handle}
-      })
-      shop_by_collection.push({
-        title:collection_name.title,
-        products:products_of_collection.collection.products
-      })
-    }
+    var products_of_collection = await context.storefront.query(COLLECTION_QUERY,{
+      variables:{handle:'mangalsutra'}
+    })
+    shop_by_collection.push({
+      title:'Mangalsutra',
+      products:products_of_collection.collection.products
+    })
 
 // All_Collections
     const COLLECTION_TYPES = []
-    for(var _COLLECTION of ['Necklace','Earrings']){
-      const sub_collection = await context.storefront.query(All_Collections,{
-        variables:{MainType:_COLLECTION}});
-        COLLECTION_TYPES.push({title:_COLLECTION,sub_collections:sub_collection.collections.edges});
-    }
-
+    var sub_collection = await context.storefront.query(All_Collections,{
+      variables:{MainType:'jhumkas OR Earrings OR studs OR bali'}});
+      COLLECTION_TYPES.push({title:'Earring',sub_collections:sub_collection.collections.edges});
+    sub_collection = await context.storefront.query(All_Collections,{
+        variables:{MainType:'necklace'}});
+        COLLECTION_TYPES.push({title:'Necklace',sub_collections:sub_collection.collections.edges});  
 
   const seo = seoPayload.home();
 
@@ -154,28 +145,10 @@ export default function Homepage() {
       <div className='block'>
         <BannerCarousel Banner_Data={HOME_BANNER_DATA}/>
       </div>
-      <div className="w-full h-[100px] bg-gradient-to-b from-[#f0ab6e] to-white m-0"></div>
+      <div className="w-full h-[3vh] bg-gradient-to-b from-[#f0ab6e] to-white m-0"></div>
       <div className="off_white_white w-full hiddenScroll p-3">
         <FeaturedCollection FeaturedCollection={featured_collection}/>
       </div>
-      {/* <div className="off_white_white">
-        {featuredProducts && (
-          <Suspense>
-            <Await resolve={featuredProducts}>
-              {({products}) => {
-                if (!products?.nodes) return <></>;
-                return (
-                  <ProductSwimlane
-                    products={products}
-                    title="Featured Products"
-                    count={4}
-                  />
-                );
-              }}
-            </Await>
-          </Suspense>
-        )}
-      </div> */}
 
       {secondaryHero && (
         <Suspense fallback={<Hero {...skeletons[1]} />}>
@@ -207,6 +180,14 @@ export default function Homepage() {
             Shop by collections
           </marquee>
         </div>
+        {COLLECTION_TYPES.map((sub_collection,index)=>(
+          <div className='text-center mt-4' key={"hello world " + index}>
+              <p className="text-2xl mb-2 text-center w-full">{sub_collection.title}</p>
+              <div className="swimlane hiddenScroll md:pb-8 md:scroll-px-8 lg:scroll-px-12 md:px-8 lg:px-12 z-0">
+                {sub_collection.sub_collections.map((collection)=>(<CollectionCard collection={collection.node}/>))}
+              </div>
+            </div>)
+        )}
         {shop_by_collection.map((collection,index)=>(
           <div className='text-center mt-4' key={"hello world " + index}>
             <p className="text-2xl mb-2 text-center w-full">{collection.title}</p>
@@ -216,30 +197,9 @@ export default function Homepage() {
             />
             </div>)
         )}
-        {COLLECTION_TYPES.map((sub_collection,index)=>(
-          <div className='text-center mt-4' key={"hello world " + index}>
-              <p className="text-2xl mb-2 text-center w-full">{sub_collection.title}</p>
-              <div className="swimlane hiddenScroll md:pb-8 md:scroll-px-8 lg:scroll-px-12 md:px-8 lg:px-12 z-0">
-                {sub_collection.sub_collections.map((collection)=>(<CollectionCard collection={collection.node}/>))}
-              </div>
-            </div>)
-        )}
+        
       </div>
-      {/* {featuredCollections && (
-        <Suspense>
-          <Await resolve={featuredCollections}>
-            {({collections}) => {
-              if (!collections?.nodes) return <></>;
-              return (
-                <FeaturedCollections
-                  collections={collections}
-                  title="Collections"
-                />
-              );
-            }}
-          </Await>
-        </Suspense>
-      )} */}
+      
       {tertiaryHero && (
         <Suspense fallback={<Hero {...skeletons[2]} />}>
           <Await resolve={tertiaryHero}>

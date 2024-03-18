@@ -55,13 +55,14 @@ export function ProductCard({
 
   return (
     <div className="flex flex-col gap-2" style={{zIndex: 0}}>
-      <Link
-        onClick={onClick}
-        to={`/products/${product.handle}`}
-        prefetch="intent"
-      >
+      
         <div className={clsx('grid gap-4', className)}>
           <div className="relative ">
+          <Link
+            onClick={onClick}
+            to={`/products/${product.handle}`}
+            prefetch="intent"
+          >
             {image && (
               <Image
                 className="object-cover fadeIn w-full"
@@ -77,8 +78,8 @@ export function ProductCard({
               size="fine"
               className={`absolute top-0 left-0 text-right p-1 bg-red-700 text-white ${cardLabel === '' || !cardLabel ? 'hidden':''}`}
             >
-              {'Upto 30% off'}
-              {/* {cardLabel} */}
+              {/* {'Upto 30% off'} */}
+              {cardLabel}
                {/* {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) && (
                   <CompareAtPrice
                     className="font-extralight opacity-50 playfair-display bg-red-500 ml-2"
@@ -86,12 +87,29 @@ export function ProductCard({
                   />
                 )} */}
             </Text>
-
+          </Link>
             {/* QUICK ADD TO CART */}
-            <button className='bg-contrast absolute bottom-0 right-0 m-4'>
-              <IoAdd size={30} className='text-[#f5db8b] hover:rotate-180 transition duration-500' />
-            </button>
+            <AddToCartButton width='auto'
+              className='bg-contrast absolute bottom-0 right-0 m-4'
+              lines={[{
+                    merchandiseId: firstVariant.id,
+                    quantity: 1,
+                  }]}
+              data-test="add-to-cart"
+              analytics={{
+                products: [productAnalytics],
+                totalValue: parseFloat(productAnalytics.price),
+              }}>
+              <button>
+                <IoAdd size={30} className='text-[#f5db8b] hover:rotate-180 transition duration-500' />
+              </button>
+            </AddToCartButton>
           </div>
+          <Link
+            onClick={onClick}
+            to={`/products/${product.handle}`}
+            prefetch="intent"
+          >
           <div className="grid gap-1 flex flex-col justify-center items-center">
             <Text
               className="overflow-hidden text-sm text-center w-100 line-clamp-2 decoration-dashed"
@@ -117,8 +135,8 @@ export function ProductCard({
               </Text>
             </div>
           </div>
+          </Link>
         </div>
-      </Link>
       {quickAdd && firstVariant.availableForSale && (
         <AddToCartButton
           lines={[
@@ -128,7 +146,7 @@ export function ProductCard({
             },
           ]}
           variant="secondary"
-          className="bg-[#5d8bd7] text-white p-1 translate-y-1/2 rounded-l-md rounded-b-md text-sm"
+          className="bg-[#5d8bd7] text-white p-1 translate-y-1/2 rounded-l-md rounded-b-md text-sm z-40"
           analytics={{
             products: [productAnalytics],
             totalValue: parseFloat(productAnalytics.price),

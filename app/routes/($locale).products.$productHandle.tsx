@@ -1,4 +1,4 @@
-import {useRef, Suspense} from 'react';
+import {useRef, Suspense,useState} from 'react';
 import {Disclosure, Listbox} from '@headlessui/react';
 import {defer, redirect, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {useLoaderData, Await} from '@remix-run/react';
@@ -73,11 +73,6 @@ export async function loader({params, request, context}: LoaderFunctionArgs) {
     throw redirectToFirstVariant({product, request});
   }
 
-  // In order to show which variants are available in the UI, we need to query
-  // all of them. But there might be a *lot*, so instead separate the variants
-  // into it's own separate query that is deferred. So there's a brief moment
-  // where variant options might show as available when they're not, but after
-  // this deferred query resolves, the UI will update.
   const variants = context.storefront.query(VARIANTS_QUERY, {
     variables: {
       handle: productHandle,
@@ -147,6 +142,7 @@ export default function Product() {
   const {product, shop, recommended, variants} = useLoaderData<typeof loader>();
   const {media, title, vendor, descriptionHtml} = product;
   const {shippingPolicy, refundPolicy} = shop;
+
   return (
     <div className="taupe-dark ">
       <Section className="px-0 md:px-8 lg:px-12">
@@ -165,7 +161,7 @@ export default function Product() {
                   <Text className={'opacity-50 font-medium'}>{vendor}</Text>
                 )}
                 {vendor && (
-                  <Text className={'opacity-50 font-medium'}>SKU : {'CODE'}</Text>
+                  <Text className={'opacity-50 font-medium'}>SKU : {product.variants.nodes[0].sku}</Text>
                 )}
               </div>
               <Suspense fallback={<ProductForm variants={[]} />}>
@@ -359,6 +355,9 @@ export function ProductForm({
   const selectedVariant = product.selectedVariant!;
   const isOutOfStock = !selectedVariant?.availableForSale;
 
+  const [cartQuantity,setCartQuantity] = useState(0);
+
+
   const isOnSale =
     selectedVariant?.price?.amount &&
     selectedVariant?.compareAtPrice?.amount &&
@@ -469,7 +468,17 @@ export function ProductForm({
           }}
         </VariantSelector>
 
-        {/* <CartLineQuantityAdjust /> */}
+        {!isOutOfStock && (
+          <div>
+            <span>Quantity</span>
+            <div className='flex flex-row justify-between items-center border rounded-md text-lg w-[100px] p-1 text-extralight'>
+                <button className='m-2' onClick={()=>setCartQuantity(cartQuantity==0?0:cartQuantity-1)}>-</button>
+                <span>{cartQuantity}</span>
+                <button className='m-2' onClick={()=>setCartQuantity(cartQuantity+1)}>+</button>
+            </div>
+          </div>
+        )}
+
 
         {selectedVariant && (
           <div className="grid items-stretch gap-4">
@@ -482,7 +491,7 @@ export function ProductForm({
                 lines={[
                   {
                     merchandiseId: selectedVariant.id!,
-                    quantity: 1,
+                    quantity: cartQuantity <= 0?1:cartQuantity,
                   },
                 ]}
                 className="bg-[#5d8bd7] text-white rounded-md p-1"

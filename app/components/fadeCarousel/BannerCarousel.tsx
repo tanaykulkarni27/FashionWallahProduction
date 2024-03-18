@@ -21,7 +21,7 @@ export default function BannerCarousel({ Banner_Data }: CarouselProps) {
   }
 
   return (
-    <div className={`relative w-full h-screen ${Banner_Data[activeIndex].class}`}>
+    <div className={`relative w-full flex flex-grow h-[91vh] ${Banner_Data[activeIndex].class}`}>
       {Banner_Data.map((item,index)=>{
         return <Transition
         show={index === activeIndex}
