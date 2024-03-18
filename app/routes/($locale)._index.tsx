@@ -32,7 +32,7 @@ export async function loader({params, context}: LoaderFunctionArgs) {
     variables: {handle: 'freestyle'},
   });
 
-  // GETTING ALL THE COLLECTON NAMES @author Tanay Kulkarni
+  // FEATURED COLLECTION CODE
   const featured_collection_names = [
     {
       handle:'natural-stone-bracelet',
@@ -44,11 +44,8 @@ export async function loader({params, context}: LoaderFunctionArgs) {
     },
     {handle:'chain-pendant',
     title:'Chain Pendant'}
-    
   ]
-
-  const featured_collection = [] // COLLECTION TO PRODUCT MAP
-  // INSERTING ALL THE COLLECTION NAMES IN THE ARRAY
+  const featured_collection = [] 
   for(const collection_name of featured_collection_names){
     var products_of_collection = await context.storefront.query(COLLECTION_QUERY,{
       variables:{handle:collection_name.handle}
@@ -59,11 +56,35 @@ export async function loader({params, context}: LoaderFunctionArgs) {
     })
   }
 
+// SHOP BY COLLECTION CODE
+    const shop_by_collection_names = [
+      {
+        handle:'mangalsutra',
+        title:'Mangalsutra'
+      },
+      {
+        handle:'bangles-2-6',
+        title:'Bangles'
+      },
+      {handle:'oxidised-necklace',
+      title:'Oxidised Necklace'}
+    ]
+    const shop_by_collection = [] 
+    for(const collection_name of shop_by_collection_names){
+      var products_of_collection = await context.storefront.query(COLLECTION_QUERY,{
+        variables:{handle:collection_name.handle}
+      })
+      shop_by_collection.push({
+        title:collection_name.title,
+        products:products_of_collection.collection.products
+      })
+    }
 
 
   const seo = seoPayload.home();
 
   return defer({
+    shop_by_collection,
     featured_collection,
     shop,
     primaryHero: hero,
@@ -111,8 +132,11 @@ export default function Homepage() {
     secondaryHero,
     tertiaryHero,
     featuredProducts,
-    featured_collection
+    featured_collection,
+    shop_by_collection
   } = useLoaderData<typeof loader>();
+
+  // console.log(shop_by_collection);
 
   // TODO: skeletons vs placeholders
   const skeletons = getHeroPlaceholder([{}, {}, {}]);
@@ -178,81 +202,15 @@ export default function Homepage() {
             Shop by collections
           </marquee>
         </div>
-
-        {/* EARRINGS COLLECTION  */}
-        <div className='text-center mt-4'>
-          <p className="text-2xl mb-2 text-center w-full">Earrings</p>
-          {featuredProducts && (
-            <Suspense>
-              <Await resolve={featuredProducts}>
-                {/* {({products}) => {
-              if (!products?.nodes) return <></>;
-              // const x =
-            }} */}
-                {({products}) => {
-                  if (!products?.nodes) return <></>;
-                  return (
-                    <ProductSwimlane
-                      products={products}
-                      title="" // no need of collection name as it is mentioned above
-                      count={4}
-                    />
-                  );
-                }}
-              </Await>
-            </Suspense>
-          )}
-        </div>
-
-        {/* Immitation Jwellery COLLECTION  */}
-        <div>
-          <p className="text-3xl mb-2 w-full text-center">Necklaces</p>
-          {featuredProducts && (
-            <Suspense>
-              <Await resolve={featuredProducts}>
-                {/* {({products}) => {
-              if (!products?.nodes) return <></>;
-              // const x =
-            }} */}
-                {({products}) => {
-                  if (!products?.nodes) return <></>;
-                  return (
-                    <ProductSwimlane
-                      products={products}
-                      title="" // no need of collection name as it is mentioned above
-                      count={4}
-                    />
-                  );
-                }}
-              </Await>
-            </Suspense>
-          )}
-        </div>
-
-        {/* Bangales COLLECTION  */}
-        <div>
-          <p className="text-3xl mb-2 text-center w-full">Mangalsutra</p>
-          {featuredProducts && (
-            <Suspense>
-              <Await resolve={featuredProducts}>
-                {/* {({products}) => {
-              if (!products?.nodes) return <></>;
-              // const x =
-            }} */}
-                {({products}) => {
-                  if (!products?.nodes) return <></>;
-                  return (
-                    <ProductSwimlane
-                      products={products}
-                      title="" // no need of collection name as it is mentioned above
-                      count={4}
-                    />
-                  );
-                }}
-              </Await>
-            </Suspense>
-          )}
-        </div>
+        {shop_by_collection.map((collection,index)=>(
+          <div className='text-center mt-4' key={"hello world " + index}>
+            <p className="text-2xl mb-2 text-center w-full">{collection.title}</p>
+            <ProductSwimlane
+              products={collection.products}
+              title={null} // no need of collection name as it is mentioned above
+            />
+            </div>)
+        )}
       </div>
       {/* {featuredCollections && (
         <Suspense>

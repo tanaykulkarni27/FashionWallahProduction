@@ -56,8 +56,6 @@ export async function loader({params, request, context}: LoaderFunctionArgs) {
 
   const selectedOptions = getSelectedProductOptions(request);
 
-  console.log(productHandle);
-
   const {shop, product} = await context.storefront.query(PRODUCT_QUERY, {
     variables: {
       handle: productHandle,
@@ -149,7 +147,6 @@ export default function Product() {
   const {product, shop, recommended, variants} = useLoaderData<typeof loader>();
   const {media, title, vendor, descriptionHtml} = product;
   const {shippingPolicy, refundPolicy} = shop;
-  console.log(recommended);
   return (
     <div className="taupe-dark ">
       <Section className="px-0 md:px-8 lg:px-12">
