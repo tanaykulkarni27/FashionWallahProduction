@@ -109,7 +109,6 @@ export async function loader({params, request, context}: LoaderFunctionArgs) {
     selectedVariant,
     url: request.url,
   });
-
   return defer({
     variants,
     product,
@@ -150,7 +149,7 @@ export default function Product() {
   const {product, shop, recommended, variants} = useLoaderData<typeof loader>();
   const {media, title, vendor, descriptionHtml} = product;
   const {shippingPolicy, refundPolicy} = shop;
-
+  console.log(recommended);
   return (
     <div className="taupe-dark ">
       <Section className="px-0 md:px-8 lg:px-12">
@@ -169,7 +168,7 @@ export default function Product() {
                   <Text className={'opacity-50 font-medium'}>{vendor}</Text>
                 )}
                 {vendor && (
-                  <Text className={'opacity-50 font-medium'}>SKU : CODE</Text>
+                  <Text className={'opacity-50 font-medium'}>SKU : {'CODE'}</Text>
                 )}
               </div>
               <Suspense fallback={<ProductForm variants={[]} />}>
@@ -292,7 +291,8 @@ export default function Product() {
                   />
                 )}
                 {/* COMPLETE LOOK PART */}
-                <Disclosure key={title} as="div" className="grid w-full gap-2">
+                <Disclosure key={title} as="div" className="grid w-full gap-2" 
+                defaultOpen={true}>
                   {({open}) => (
                     <>
                       <Disclosure.Button className="text-left">
@@ -314,9 +314,8 @@ export default function Product() {
                         className={'pb-4 pt-2 grid gap-2 text-xl'}
                       >
                         <div className="flex flex-col justify-left">
-                          <ShortProduct product={product} />
-                          <ShortProduct product={product} />
-                        </div>
+                          <ShortProduct product={product} key={product.id} />
+                         </div>
                       </Disclosure.Panel>
                     </>
                   )}

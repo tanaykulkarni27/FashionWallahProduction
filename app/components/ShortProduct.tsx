@@ -2,10 +2,10 @@ import type {ProductCardFragment} from 'storefrontapi.generated';
 import {flattenConnection, Image, Money, useMoney} from '@shopify/hydrogen';
 import { IoAdd } from 'react-icons/io5';
 
-export default function ShortProduct({product}:{product:ProductCardFragment;}) {
+export default function ShortProduct({product,key}:{product:ProductCardFragment;key:String;}) {
 
   return (
-    <div className="border p-2 flex flex-row justify-center items-center w-full">
+    <div className="border p-2 flex flex-row justify-center items-center w-full" key={key}>
         <div className="mx-2 w-1/3">
             <Image 
                 data={product.selectedVariant.image}

@@ -32,22 +32,47 @@ export async function loader({params, context}: LoaderFunctionArgs) {
     variables: {handle: 'freestyle'},
   });
 
+  // GETTING ALL THE COLLECTON NAMES @author Tanay Kulkarni
+  const featured_collection_names = [
+    {
+      handle:'natural-stone-bracelet',
+      title:'Natural Stone Bracelet'
+    },
+    {
+      handle:'a-d-stone-bracelets',
+      title:'A D Bracelets'
+    },
+    {handle:'chain-pendant',
+    title:'Chain Pendant'}
+    
+  ]
+
+  const featured_collection = [] // COLLECTION TO PRODUCT MAP
+  // INSERTING ALL THE COLLECTION NAMES IN THE ARRAY
+  for(const collection_name of featured_collection_names){
+    var products_of_collection = await context.storefront.query(COLLECTION_QUERY,{
+      variables:{handle:collection_name.handle}
+    })
+    featured_collection.push({
+      title:collection_name.title,
+      products:products_of_collection.collection.products
+    })
+  }
+
+
+
   const seo = seoPayload.home();
 
   return defer({
+    featured_collection,
     shop,
     primaryHero: hero,
-    // These different queries are separated to illustrate how 3rd party content
+    // Thes different queries are separated to illustrate how 3rd party content
     // fetching can be optimized for both above and below the fold.
     featuredProducts: context.storefront.query(
       HOMEPAGE_FEATURED_PRODUCTS_QUERY,
       {
         variables: {
-          /**
-           * Country and language properties are automatically injected
-           * into all queries. Passing them is unnecessary unless you
-           * want to override them from the following default:
-           */
           country,
           language,
         },
@@ -85,8 +110,8 @@ export default function Homepage() {
     primaryHero,
     secondaryHero,
     tertiaryHero,
-    featuredCollections,
     featuredProducts,
+    featured_collection
   } = useLoaderData<typeof loader>();
 
   // TODO: skeletons vs placeholders
@@ -101,10 +126,10 @@ export default function Homepage() {
         <BannerCarousel Banner_Data={HOME_BANNER_DATA}/>
       </div>
       <div className="w-full h-[100px] bg-gradient-to-b from-[#f0ab6e] to-white m-0"></div>
-      <div className="off_white_white w-full hiddenScroll p-3 min-h-[10vw]">
-        <FeaturedCollection />
+      <div className="off_white_white w-full hiddenScroll p-3">
+        <FeaturedCollection FeaturedCollection={featured_collection}/>
       </div>
-      <div className="off_white_white">
+      {/* <div className="off_white_white">
         {featuredProducts && (
           <Suspense>
             <Await resolve={featuredProducts}>
@@ -121,7 +146,7 @@ export default function Homepage() {
             </Await>
           </Suspense>
         )}
-      </div>
+      </div> */}
 
       {secondaryHero && (
         <Suspense fallback={<Hero {...skeletons[1]} />}>
@@ -367,3 +392,31 @@ export const FEATURED_COLLECTIONS_QUERY = `#graphql
     }
   }
 ` as const;
+
+const COLLECTION_QUERY = `#graphql
+query AllProducts($handle: String!) {
+  collection(handle: $handle) {
+    handle
+    products(first: 4) {
+      nodes {
+          ...ProductCard
+        }
+    }
+  }
+}
+${PRODUCT_CARD_FRAGMENT}
+`;
+
+const All_Collection_names = `#graphql
+query AllProducts {
+  collections(first:250){
+    edges{
+      node{
+        id
+        title
+        handle
+      }
+    }
+  }
+}
+`
