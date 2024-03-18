@@ -29,7 +29,7 @@ export default function CollectionCard({
 }) {
   return (
   <Link
-        className="sm:w-[35vw] lg:w-[25vw] md:w-[30vw] bg-red-500 z-0 group/item"
+        className="sm:w-[35vw] lg:w-[25vw] md:w-[30vw] z-0 group/item"
         key={collection.id}
         prefetch="intent"
         to={`/collections/${collection.handle}`}

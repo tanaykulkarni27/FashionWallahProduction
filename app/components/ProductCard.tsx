@@ -33,8 +33,8 @@ export function ProductCard({
   const firstVariant = flattenConnection(cardProduct.variants)[0];
 
   if (!firstVariant) return null;
-  const {image, price, compareAtPrice} = firstVariant;
-
+  var {image, price, compareAtPrice} = firstVariant;
+var comparisonPrice = null;
   if (label) {
     cardLabel = label;
   } else if (isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2)) {
@@ -42,7 +42,6 @@ export function ProductCard({
   } else if (isNewArrival(product.publishedAt)) {
     cardLabel = 'New';
   }
-
   const productAnalytics: ShopifyAnalyticsProduct = {
     productGid: product.id,
     variantGid: firstVariant.id,
@@ -90,7 +89,7 @@ export function ProductCard({
           </Link>
             {/* QUICK ADD TO CART */}
             <AddToCartButton width='auto'
-              className='bg-contrast absolute bottom-0 right-0 m-4'
+              className='bg-contrast absolute bottom-0 right-0 m-4 flex justify-center items-center'
               lines={[{
                     merchandiseId: firstVariant.id,
                     quantity: 1,
@@ -126,12 +125,17 @@ export function ProductCard({
                   className="font-extralight bg-[#5d8bd7] mr-1 p-1"
                   // style={{fontFamily: 'Playfair Display'}}
                 />
-                {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) && (
+                {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) ? (
                   <CompareAtPrice
                     className="font-extralight opacity-100 p-1"
                     data={compareAtPrice as MoneyV2}
                   />
-                )}
+                ):(
+                  <CompareAtPrice
+                  withoutTrailingZeros
+                  data={price}
+                  className="font-extralight opacity-100 p-1"
+                />)}
               </Text>
             </div>
           </div>

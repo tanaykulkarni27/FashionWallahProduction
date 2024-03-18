@@ -472,9 +472,9 @@ export function ProductForm({
           <div>
             <span>Quantity</span>
             <div className='flex flex-row justify-between items-center border rounded-md text-lg w-[100px] p-1 text-extralight'>
-                <button className='m-2' onClick={()=>setCartQuantity(cartQuantity==0?0:cartQuantity-1)}>-</button>
+                <button className='m-2' onClick={()=>setCartQuantity(quantity=>quantity==0?0:quantity-1)}>-</button>
                 <span>{cartQuantity}</span>
-                <button className='m-2' onClick={()=>setCartQuantity(cartQuantity+1)}>+</button>
+                <button className='m-2' onClick={()=>setCartQuantity(quantity=>quantity+1)}>+</button>
             </div>
           </div>
         )}
