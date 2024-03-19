@@ -62,9 +62,9 @@ export default function FeaturedCollection({FeaturedCollection}: {
     // THIS THE ROOT DIVISION
     
     <div className="relative flex flex-col flex-grow w-full overflow-x-hidden">
-        <div className='relative flex flex-col flex-grow  w-full overflow-x-hidden min-h-[10vh]'>
-          <button className={button_class + ` left-0`} onClick={move_prev}><FaArrowLeft /></button>
-          <button className={button_class + ` right-0`} onClick={move_next}><FaArrowRight /></button>
+        <div className='relative flex flex-col flex-grow w-full overflow-x-hidden min-h-[10vh]'>
+          <button className={button_class + ` left-0 h-fit`} onClick={move_prev}><FaArrowLeft className='text-contrast' size={20}/></button>
+          <button className={button_class + ` right-0 h-fit`} onClick={move_next}><FaArrowRight  className='text-contrast' size={20}/></button>
           {FeaturedCollection.map((item, index) => (
             <div
               key={index + 'FEATURED'}
@@ -120,7 +120,7 @@ export default function FeaturedCollection({FeaturedCollection}: {
 }
 
 const button_class =
-  'absolute bottom-0 top-0 z-10 m-1 rounded-full shadow-lg bg-white';
+  'absolute top-[50%] translate-y-[-50%] z-10 m-1 rounded-full shadow-lg bg-white';
 
 
   /*

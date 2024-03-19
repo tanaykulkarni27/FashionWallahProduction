@@ -5,11 +5,12 @@ import { IoIosArrowForward,IoIosArrowDown } from "react-icons/io";
 import {Link} from './Link';
 type SubMenuProps = {
   items: ParentEnhancedMenuItem[];
-  title: string;
+  title: String;
+  root:boolean;
   side: 'right' | null;
 };
 
-function SubMenu({items, title, side = null}: SubMenuProps) {
+function SubMenu({items, title,root=false, side = null}: SubMenuProps) {
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
   const handleMouseEnter = () => {
     setSubMenuOpen(true);
@@ -19,7 +20,7 @@ function SubMenu({items, title, side = null}: SubMenuProps) {
   };
 
   return (
-    <div className={`relative group w-full`} 
+    <div className={`relative group min-w-[100px]`} 
         onMouseOver={handleMouseEnter}
         onMouseOut={handleMouseOut}>
  
@@ -27,9 +28,8 @@ function SubMenu({items, title, side = null}: SubMenuProps) {
         to="#"
         className=""
       >
-        <div className={`flex flex-row justify-between items-center text-contrast ${side != null && 'text-sm py-2 px-4 '} text-left w-full `}>
+        <div className={`flex flex-row justify-between items-center text-contrast ${side != null && 'text-sm py-2 px-4 '} text-left w-full ${!root && 'hover:bg-[#c39898]'}`}>
           <span className=' text-center w-full'> {title} </span>
-          {side !== 'right'?<IoIosArrowDown size={15} className='text-opacity-10'/>:<IoIosArrowForward size={15} className='text-opacity-10'/>} 
         </div>
       </Link>
       <div
@@ -42,7 +42,7 @@ function SubMenu({items, title, side = null}: SubMenuProps) {
             <NavLink
               key={subItem.id}
               to={subItem.url}
-              className="block text-sm py-2 px-4 text-contrast text-left"
+              className="block text-sm py-2 px-4 text-contrast text-left min-w-[100px] hover:bg-[#c39898]"
               style={activeLinkStyle}
             >
               {subItem.title}

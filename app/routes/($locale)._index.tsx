@@ -145,11 +145,9 @@ export default function Homepage() {
       <div className='block'>
         <BannerCarousel Banner_Data={HOME_BANNER_DATA}/>
       </div>
-      {/* <div className="w-full h-[3vh] bg-gradient-to-b from-[#f0ab6e] to-white m-0"></div> */}
       <div className="my_gradient w-full hiddenScroll p-3">
         <FeaturedCollection FeaturedCollection={featured_collection}/>
       </div>
-
       {secondaryHero && (
         <Suspense fallback={<Hero {...skeletons[1]} />}>
           <Await resolve={secondaryHero}>
@@ -160,7 +158,7 @@ export default function Homepage() {
           </Await>
         </Suspense>
       )}
-
+      <div className="w-full h-[5vh] bg-gradient-to-b from-[#4BC0C8] to-white m-0"></div>
       <div className="trans_taupe pb-20">
         <ReviewsNRating
           count={[1407, 23123]}

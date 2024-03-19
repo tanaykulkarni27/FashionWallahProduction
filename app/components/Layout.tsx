@@ -230,10 +230,37 @@ function MenuMobileNav({
         );
       })}
       <div className="flex flex-row justify-between items-center w-full mb-3 mt-5">
-        <FaInstagram className="" />
+      <Link
+        to={insta_link}
+        target={insta_link}
+        prefetch="intent"
+        className={({isActive}) => (isActive ? 'pb-1' : 'pb-1')}
+      ><FaInstagram className="" />
+      </Link>
+      <Link
+        to={whatsapp_link}
+        target={whatsapp_link}
+        prefetch="intent"
+        className={({isActive}) => (isActive ? 'pb-1' : 'pb-1')}
+      >
         <FaWhatsapp className="" />
+      </Link>
+      <Link
+        to={facebook_link}
+        target={facebook_link}
+        prefetch="intent"
+        className={({isActive}) => (isActive ? 'pb-1' : 'pb-1')}
+      >
         <FaFacebookSquare />
+      </Link>
+      <Link
+        to={youtube_link}
+        target={youtube_link}
+        prefetch="intent"
+        className={({isActive}) => (isActive ? 'pb-1' : 'pb-1')}
+      > 
         <FaYoutube size={20} />
+      </Link>
       </div>
       <div className="border-b-2 w-full"></div>
       <div className="mt-3 w-full">Account</div>
@@ -380,7 +407,7 @@ function DesktopHeader({
             const hasSubMenu = item.items && item.items.length > 0;
 
             return hasSubMenu ? (
-              <SubMenu items={item.items} title={item.title} />
+              <SubMenu items={item.items} title={item.title} root={true}/>
             ) : (
               <div>
                 <Link
@@ -707,3 +734,8 @@ function FooterMenu({menu}: {menu?: EnhancedMenu}) {
     </div>
   );
 }
+
+const youtube_link = 'https://www.youtube.com/@FashionwallahIndia?si=ZYsErV6xtD8zZ2tE';
+const whatsapp_link = 'https://wa.me/9763307939';
+const facebook_link = 'https://www.facebook.com/share/9BC8goz9Bgt6a9Tb/?mibextid=qi2Omg';
+const insta_link = 'https://www.instagram.com/fashionwallah.in?igsh=enI0dmIzazExaTJk';
