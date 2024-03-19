@@ -69,10 +69,10 @@ export async function loader({params, context}: LoaderFunctionArgs) {
 // All_Collections
     const COLLECTION_TYPES = []
     var sub_collection = await context.storefront.query(All_Collections,{
-      variables:{MainType:'jhumkas OR Earrings OR studs OR bali'}});
+      variables:{MainType:'jhumkas OR Earrings OR studs OR bali OR earring'}});
       COLLECTION_TYPES.push({title:'Earring',sub_collections:sub_collection.collections.edges});
     sub_collection = await context.storefront.query(All_Collections,{
-        variables:{MainType:'necklace'}});
+        variables:{MainType:'necklace OR Necklace'}});
         COLLECTION_TYPES.push({title:'Necklace',sub_collections:sub_collection.collections.edges});  
 
   const seo = seoPayload.home();
@@ -145,8 +145,8 @@ export default function Homepage() {
       <div className='block'>
         <BannerCarousel Banner_Data={HOME_BANNER_DATA}/>
       </div>
-      <div className="w-full h-[3vh] bg-gradient-to-b from-[#f0ab6e] to-white m-0"></div>
-      <div className="off_white_white w-full hiddenScroll p-3">
+      {/* <div className="w-full h-[3vh] bg-gradient-to-b from-[#f0ab6e] to-white m-0"></div> */}
+      <div className="my_gradient w-full hiddenScroll p-3">
         <FeaturedCollection FeaturedCollection={featured_collection}/>
       </div>
 

@@ -69,3 +69,9 @@
 .stone_gray {
   background-color: rgb(209 213 219);
 }
+
+
+.my_gradient{
+  /* background: linear-gradient(to bottom, #FEAC5E, #E7E9BB, #403B4A); */
+  background: linear-gradient(to bottom, #FEAC5E, #C779D0, #4BC0C8,white);
+}
