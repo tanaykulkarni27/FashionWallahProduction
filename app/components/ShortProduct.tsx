@@ -5,7 +5,7 @@ import { IoAdd } from 'react-icons/io5';
 export default function ShortProduct({product,key}:{product:ProductCardFragment;key:String;}) {
 
   return (
-    <div className="border p-2 flex flex-row justify-center items-center w-full shadow-md " key={key}>
+    <div className="border p-2 flex flex-row justify-center items-center w-full shadow-md rounded-md" key={key}>
         <div className="mx-2 w-1/3">
             <Image 
                 data={product.selectedVariant.image}
