@@ -242,7 +242,7 @@ export default function Product() {
                     <span className="mt-2">Top Notch Quality</span>
                   </div>
                 </div>
-                <div className="flex flex-row justify-center w-full">
+                <div className="flex flex-row justify-center w-full mt-2">
                   <div className='w-1/3 flex flex-col justify-start items-center text-center'>
                     <IoGiftSharp size={30} />
                     <span className="mt-2">Perfect Gift Option</span>
@@ -295,7 +295,6 @@ export default function Product() {
                           </Text>
                           <IconClose
                             className={clsx(
-                              // Use spread syntax for clsx arguments
                               'transition-transform transform-gpu duration-200',
                               !open && 'rotate-[45deg]',
                             )}
@@ -355,7 +354,7 @@ export function ProductForm({
   const selectedVariant = product.selectedVariant!;
   const isOutOfStock = !selectedVariant?.availableForSale;
 
-  const [cartQuantity,setCartQuantity] = useState(0);
+  const [cartQuantity,setCartQuantity] = useState(1);
 
 
   const isOnSale =
@@ -472,7 +471,7 @@ export function ProductForm({
           <div>
             <span>Quantity</span>
             <div className='flex flex-row justify-between items-center border rounded-md text-lg w-[100px] p-1 text-extralight'>
-                <button className='m-2' onClick={()=>setCartQuantity(quantity=>quantity==0?0:quantity-1)}>-</button>
+                <button className='m-2' onClick={()=>setCartQuantity(quantity=>quantity==1?1:quantity-1)}>-</button>
                 <span>{cartQuantity}</span>
                 <button className='m-2' onClick={()=>setCartQuantity(quantity=>quantity+1)}>+</button>
             </div>
@@ -561,7 +560,7 @@ function ProductDetail({
     <Disclosure
       key={title}
       as="div"
-      className="grid w-full gap-2"
+      className="grid w-full gap-2 text-left"
       defaultOpen={initState}
     >
       {({open}) => (
@@ -582,7 +581,7 @@ function ProductDetail({
 
           <Disclosure.Panel className={'pb-4 pt-2 grid gap-2 text-xl'}>
             <div
-              className="prose dark:prose-invert"
+              className="prose dark:prose-invert text-left"
               dangerouslySetInnerHTML={{__html: content}}
             />
             {learnMore && (

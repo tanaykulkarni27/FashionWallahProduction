@@ -112,7 +112,7 @@ var comparisonPrice = null;
           >
           <div className="grid gap-1 flex flex-col justify-center items-center">
             <Text
-              className="overflow-hidden text-sm text-center w-100 line-clamp-2 decoration-dashed animate-tracking-in-expand"
+              className="overflow-hidden text-sm text-center w-100 line-clamp-1 md:line-clamp-2 decoration-dashed animate-tracking-in-expand"
               as="h3"
             >
               {product.title.toUpperCase()}
