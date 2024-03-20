@@ -9,8 +9,10 @@ export default {
       animation: {
         scroll:
           "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+        "tracking-in-expand": "tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000)   both",
         marquee: 'marquee 25s linear infinite',
         marquee2: 'marquee2 25s linear infinite',
+        "color-change-2x": "color-change-2x 2s linear  infinite alternate both",
       },
       keyframes: {
         scroll: {
@@ -25,6 +27,26 @@ export default {
         marquee2: {
           '0%': { transform: 'translateX(100%)' },
           '100%': { transform: 'translateX(0%)' },
+        },
+        "tracking-in-expand": {
+          "0%": {
+              "letter-spacing": "-.5em",
+              opacity: "0"
+          },
+          "40%": {
+              opacity: ".6"
+          },
+          to: {
+              opacity: "1"
+          }
+        },
+        "color-change-2x": {
+          "0%": {
+              background: "#f3f3f3"
+          },
+          to: {
+              background: "#bfbfbf"
+          }
         },
       },
       colors: {

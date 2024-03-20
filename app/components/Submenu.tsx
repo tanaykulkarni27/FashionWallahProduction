@@ -8,19 +8,22 @@ type SubMenuProps = {
   title: String;
   root:boolean;
   side: 'right' | null;
+  setmenuState:any;
 };
 
-function SubMenu({items, title,root=false, side = null}: SubMenuProps) {
+function SubMenu({items, title,root=false, side = null,setmenuState}: SubMenuProps) {
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
   const handleMouseEnter = () => {
     setSubMenuOpen(true);
+    setmenuState(true);
   };
   const handleMouseOut = () => {
     setSubMenuOpen(false);
+    setmenuState(false);
   };
 
   return (
-    <div className={`relative group min-w-[100px]`} 
+    <div className={`relative min-w-[100px]`} 
         onMouseOver={handleMouseEnter}
         onMouseOut={handleMouseOut}>
  

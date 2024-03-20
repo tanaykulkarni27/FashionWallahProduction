@@ -387,14 +387,16 @@ function DesktopHeader({
     };
   }, []);
 
+  var [isMenuOpen, setMenuState] = useState(false);
+
   return (
     <header
       role="banner"
       className={`navbar_element sticky
           text-contrast ${
-            scrolled ? 'backdrop-blur-md bg-white/30' : 'stone_gray'
+            (scrolled && !isMenuOpen)? 'backdrop-blur-md bg-white/30' : 'stone_gray'
           } 
-          hidden h-nav lg:flex items-center transition duration-300 z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8 z-50`}
+          hidden h-nav lg:flex items-center transition duration-300 z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8 z-50 `}
     >
       <div className="flex items-center gap-12">
         <Link className="font-bold" to="/" prefetch="intent">
@@ -407,7 +409,7 @@ function DesktopHeader({
             const hasSubMenu = item.items && item.items.length > 0;
 
             return hasSubMenu ? (
-              <SubMenu items={item.items} title={item.title} root={true}/>
+              <SubMenu items={item.items} title={item.title} root={true} setmenuState={setMenuState}/>
             ) : (
               <div>
                 <Link
