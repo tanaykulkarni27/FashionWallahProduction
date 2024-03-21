@@ -44,6 +44,7 @@ import {subMenu_Test_data} from '../testData/ComponentTestingData';
 
 import SubMenu from './Submenu';
 import {TracingBeam} from './UIAcernity/TracingBeam';
+import { processURL } from '~/utils';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -206,7 +207,8 @@ function MenuMobileNav({
             key={item.id}
           >
             <ReactLink
-              to={item.to}
+            
+              to={processURL(item.url,/\/collections\/[a-zA-Z0-9-]+/)}
               target={item.target}
               onClick={onClose}
               className={({isActive}) =>
