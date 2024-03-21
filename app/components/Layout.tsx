@@ -1,4 +1,4 @@
-import {useParams, Form, Await, NavLink} from '@remix-run/react';
+import {useParams, Form, Await, NavLink,Link as ReactLink} from '@remix-run/react';
 import {useWindowScroll} from 'react-use';
 import {Disclosure} from '@headlessui/react';
 import {Suspense, useEffect, useMemo, useState} from 'react';
@@ -170,7 +170,7 @@ function MenuMobileNav({
   onClose: () => void;
 }) {
   const [show_sub_menu, set_sub_menu] = useState(menu?.items);
-
+  // console.log(menu);
   return (
     <nav
       className={`grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8 w-screen text-black overflow-y-scroll scrollbar-hide max-h-[70vh]`}
@@ -205,7 +205,7 @@ function MenuMobileNav({
             className="flex flex-row items-center justify-between w-full my-5"
             key={item.id}
           >
-            <Link
+            <ReactLink
               to={item.to}
               target={item.target}
               onClick={onClose}
@@ -216,8 +216,8 @@ function MenuMobileNav({
               <Text as="span" size="copy">
                 {item.title}
               </Text>
-            </Link>
-            <Link
+            </ReactLink>
+            <ReactLink
               key={item.id}
               to={item.to}
               target={item.target}
@@ -225,7 +225,7 @@ function MenuMobileNav({
               className={({isActive}) => (isActive ? 'pb-1' : 'pb-1')}
             >
               <FaAngleRight className="rounded-full bg-[#d3d3d3] text-black hover:bg-slate-950 hover:text-white" />
-            </Link>
+            </ReactLink>
           </div>
         );
       })}
@@ -399,10 +399,10 @@ function DesktopHeader({
           hidden h-nav lg:flex items-center transition duration-300 z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8 z-50 `}
     >
       <div className="flex items-center gap-12">
-        <Link className="font-bold" to="/" prefetch="intent">
+        <ReactLink className="font-bold" to="/" prefetch="intent">
           {/* {title} */}
           <img src={fwLogo} className="w-80" alt="" />
-        </Link>
+        </ReactLink>
         <nav className="flex gap-6 font-bold">
           {/* Top level menu items */}
           {(menu?.items || []).map((item) => {
@@ -412,7 +412,7 @@ function DesktopHeader({
               <SubMenu items={item.items} title={item.title} root={true} setmenuState={setMenuState}/>
             ) : (
               <div>
-                <Link
+                <ReactLink
                   key={item.id}
                   to={item.to}
                   target={item.target}
@@ -422,7 +422,7 @@ function DesktopHeader({
                   }
                 >
                   {item.title}
-                </Link>
+                </ReactLink>
               </div>
             );
           })}

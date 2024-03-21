@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react';
-import {NavLink} from '@remix-run/react';
+import {NavLink,Link as ReactLink} from '@remix-run/react';
 import type {ParentEnhancedMenuItem} from '~/lib/utils';
 import { IoIosArrowForward,IoIosArrowDown } from "react-icons/io";
 import {Link} from './Link';
+import { processURL } from '~/utils';
 type SubMenuProps = {
   items: ParentEnhancedMenuItem[];
   title: String;
@@ -27,14 +28,14 @@ function SubMenu({items, title,root=false, side = null,setmenuState}: SubMenuPro
         onMouseOver={handleMouseEnter}
         onMouseOut={handleMouseOut}>
  
-      <Link
+      <ReactLink
         to="#"
         className=""
       >
         <div className={`flex flex-row justify-between items-center text-contrast ${side != null && 'text-sm py-2 px-4 '} text-left w-full ${!root && 'hover:bg-[#c39898]'}`}>
           <span className=' text-center w-full'> {title} </span>
         </div>
-      </Link>
+      </ReactLink>
       <div
         className={`
         ${isSubMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} transition duration-300 ease-in-out
@@ -44,7 +45,7 @@ function SubMenu({items, title,root=false, side = null,setmenuState}: SubMenuPro
           return (subItem.items && subItem.items.length > 0)?(<SubMenu items={subItem?.items} title={subItem.title} side={'right'} />):(
             <NavLink
               key={subItem.id}
-              to={subItem.url}
+              to={processURL(subItem.url,/\/collections\/[a-zA-Z0-9-]+/)}
               className="block text-sm py-2 px-4 text-contrast text-left min-w-[100px] hover:bg-[#c39898]"
               style={activeLinkStyle}
             >
