@@ -126,17 +126,12 @@ var comparisonPrice = null;
                   className="font-extralight bg-[#5d8bd7] mr-1 p-1"
                   // style={{fontFamily: 'Playfair Display'}}
                 />
-                {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) ? (
+                {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) && (
                   <CompareAtPrice
                     className="font-extralight opacity-100 p-1"
                     data={compareAtPrice as MoneyV2}
                   />
-                ):(
-                  <CompareAtPrice
-                  withoutTrailingZeros
-                  data={price}
-                  className="font-extralight opacity-100 p-1"
-                />)}
+                )}
               </Text>
             </div>
           </div>

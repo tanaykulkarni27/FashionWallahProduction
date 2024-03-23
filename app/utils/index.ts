@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function processURL(url:String,regex:RegExp){
-// /\/collections\/[a-zA-Z0-9-]+/
+// 
 const match = url.match(regex);
 if (match) 
   return match[0];
