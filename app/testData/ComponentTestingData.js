@@ -1,6 +1,7 @@
-import BANNER_1 from './TEST_IMAGES/BANNER_1.webp';
-import BANNER_2 from './TEST_IMAGES/BANNER_2.webp';
-import BANNER_3 from './TEST_IMAGES/BANNER_3.webp';
+import BANNER_1 from './TEST_IMAGES/BANNER_1.png';
+import BANNER_2 from './TEST_IMAGES/BANNER_2.png';
+import BANNER_3 from './TEST_IMAGES/BANNER_3.png';
+import {BANNER_1_TEXT} from './BannerOffer';
 
 export const banner_data = {
   image: {
@@ -63,6 +64,8 @@ export const HOME_BANNER_DATA = [
     },
     color: '',
     class: 'dark_organge_background',
+    offer_text:BANNER_1_TEXT
+
   },
   {
     image: {
@@ -73,6 +76,7 @@ export const HOME_BANNER_DATA = [
     },
     color: '',
     class: 'pink_purple_background',
+    offer_text:''
   },
   {
     image: {
@@ -83,6 +87,7 @@ export const HOME_BANNER_DATA = [
     },
     color: '',
     class: 'orange_background',
+    offer_text:''
   },
 ];
 
@@ -165,146 +170,3 @@ export const TEST_COLLECTIONS = [
   },
 ];
 
-export const subMenu_Test_data = {
-  items: [
-    {
-      id: 'gid://shopify/MenuItem/568610390334',
-      resourceId: 'gid://shopify/Page/126615552318',
-      tags: [],
-      title: 'Contact us',
-      type: 'PAGE',
-      url: 'https://fashionwallah.in/pages/contact',
-      items: [],
-      isExternal: false,
-      target: '_self',
-      to: '/pages/contact',
-    },
-    {
-      id: 'gid://shopify/MenuItem/568610390334',
-      resourceId: 'gid://shopify/Page/126615552318',
-      tags: [],
-      title: 'Contact us',
-      type: 'PAGE',
-      url: 'https://fashionwallah.in/pages/contact',
-      items: [],
-      isExternal: false,
-      target: '_self',
-      to: '/pages/contact',
-    },
-    {
-      id: 'gid://shopify/MenuItem/565105262910',
-      resourceId: 'gid://shopify/Collection/469571731774',
-      tags: [],
-      title: 'Trending',
-      type: 'COLLECTION',
-      url: 'https://fashionwallah.in/collections/trending',
-      items: [],
-      isExternal: false,
-      target: '_self',
-      to: '/collections/trending',
-    },
-    {
-      id: 'gid://shopify/MenuItem/588298453310',
-      resourceId: null,
-      tags: [],
-      title: 'For Her',
-      type: 'HTTP',
-      url: 'https://fashionwallah.in#',
-      items: [
-        {
-          id: 'gid://shopify/MenuItem/570775732542',
-          resourceId: 'gid://shopify/Collection/459558748478',
-          tags: ['Mangalsutra'],
-          title: 'Mangalsutra',
-          type: 'COLLECTION',
-          url: 'https://fashionwallah.in/collections/mangalsutra/Mangalsutra',
-          isExternal: false,
-          target: '_self',
-          to: '/collections/Mangalsutra',
-        },
-        {
-          id: 'gid://shopify/MenuItem/570765803838',
-          resourceId: null,
-          tags: [],
-          title: 'Earrings',
-          type: 'HTTP',
-          url: 'https://fashionwallah.in#',
-          isExternal: false,
-          target: '_self',
-          to: '/',
-        },
-        {
-          id: 'gid://shopify/MenuItem/570774520126',
-          resourceId: null,
-          tags: [],
-          title: 'Necklace',
-          type: 'HTTP',
-          url: 'https://fashionwallah.in#',
-          isExternal: false,
-          target: '_self',
-          to: '/',
-        },
-        {
-          id: 'gid://shopify/MenuItem/574670504254',
-          resourceId: null,
-          tags: [],
-          title: 'Bracelets',
-          type: 'HTTP',
-          url: 'https://fashionwallah.in#',
-          isExternal: false,
-          target: '_self',
-          to: '/',
-        },
-        {
-          id: 'gid://shopify/MenuItem/570765771070',
-          resourceId: null,
-          tags: [],
-          title: 'Imitation Jewelry',
-          type: 'HTTP',
-          url: 'https://fashionwallah.in#',
-          isExternal: false,
-          target: '_self',
-          to: '/',
-        },
-        {
-          id: 'gid://shopify/MenuItem/570776518974',
-          resourceId: null,
-          tags: [],
-          items: [
-            {
-              id: 'gid://shopify/MenuItem/570765803838',
-              resourceId: null,
-              tags: [],
-              title: 'Earrings',
-              type: 'HTTP',
-              url: 'https://fashionwallah.in#',
-              isExternal: false,
-              target: '_self',
-              to: '/',
-            },
-            {
-              id: 'gid://shopify/MenuItem/570765803838',
-              resourceId: null,
-              tags: [],
-              title: 'Earrings',
-              type: 'HTTP',
-              url: 'https://fashionwallah.in#',
-              isExternal: false,
-              target: '_self',
-              to: '/',
-            },
-          ],
-          title: 'Bangles',
-          type: 'HTTP',
-          url: 'https://fashionwallah.in#',
-          isExternal: false,
-          target: '_self',
-          to: '/',
-        },
-      ],
-      isExternal: false,
-      target: '_self',
-      to: '/',
-    },
-  ],
-};

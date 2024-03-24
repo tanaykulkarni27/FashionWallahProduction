@@ -40,8 +40,6 @@ import MasterCardIcon from '~/icons/MasterCardIcon';
 import GpayIcon from '~/icons/GpayIcon';
 import ShopIcon from '~/icons/ShopIcon';
 
-import {subMenu_Test_data} from '../testData/ComponentTestingData';
-
 import SubMenu from './Submenu';
 import {TracingBeam} from './UIAcernity/TracingBeam';
 import { processURL } from '~/utils';

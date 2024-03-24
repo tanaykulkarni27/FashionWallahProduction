@@ -9,6 +9,7 @@ interface BannerData {
   };
   color: string;
   class: string;
+  offer_text:String | null
 }
 type CarouselProps = {
   Banner_Data: BannerData[];
@@ -37,9 +38,10 @@ export default function BannerCarousel({ Banner_Data }: CarouselProps) {
       >
         <div className={'m-0 w-full h-full flex flex-row justify-center items-center ' + item.class}>
           <div className='relative'>
+          <div className='w-full h-full absolute top-0 left-0 rounded-2xl' dangerouslySetInnerHTML={{ __html: item?.offer_text || '' }}></div>
             <img
               src={item.image.url}
-              className="rounded-2xl w-[90vw] h-[90vh]"
+              className="rounded-2xl w-[90vw] h-[90vh] object-cover object-center overflow-hidden"
             />
             <div className='flex flex-row justify-center items-center absolute bottom-[10px] right-[10px]'>
               {
