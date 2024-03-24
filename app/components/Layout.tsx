@@ -391,11 +391,13 @@ function DesktopHeader({
 
   return (
     <header
+      id='nav_desk_header'
       role="banner"
-      className={`navbar_element sticky
+      className={`navbar_element 
           text-contrast ${
             (scrolled && !isMenuOpen)? 'backdrop-blur-md bg-white/30' : 'stone_gray'
           } 
+          ${isHome && !scrolled ? 'bg-transparent':'sticky'}
           hidden h-nav lg:flex items-center transition duration-300 z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8 z-50 `}
     >
       <div className="flex items-center gap-12">

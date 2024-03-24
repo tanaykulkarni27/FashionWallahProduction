@@ -1,6 +1,6 @@
 import BANNER_1 from './TEST_IMAGES/BANNER_1.png';
-import BANNER_2 from './TEST_IMAGES/BANNER_2.png';
-import BANNER_3 from './TEST_IMAGES/BANNER_3.png';
+import BANNER_2 from './TEST_IMAGES/BANNER_2.jpeg';
+import BANNER_3 from './TEST_IMAGES/BANNER_3.jpeg';
 import {BANNER_1_TEXT} from './BannerOffer';
 
 export const banner_data = {
