@@ -254,7 +254,7 @@ function CartLineItem({line}: {line: CartLine}) {
   return (
     <li
       key={id}
-      className="flex justify-start items-start w-full"
+      className="flex justify-start items-start w-full my-2"
       style={{
         // Hide the line item if the optimistic data action is remove
         // Do not remove the form from the DOM
@@ -273,7 +273,7 @@ function CartLineItem({line}: {line: CartLine}) {
           />
         )}
       </div>
-      <div className="flex justify-between flex-grow max-w-[70%]">
+      <div className="flex justify-between flex-grow max-w-[70%] mx-2">
         <div className="grid lg:gap-2 gap-1">
           <Heading as="h3" size="copy" className=''>
             {merchandise?.product?.handle ? (
