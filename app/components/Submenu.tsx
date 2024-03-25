@@ -40,7 +40,7 @@ function SubMenu({items, title,root=false, side = null,setmenuState}: SubMenuPro
         className={`
         ${isSubMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} transition duration-300 ease-in-out
         absolute ${side === 'right' ? 'top-0 left-full' : 'top-full left-0 right-0'}
-        shadow-lg font-normal stone_gray`}>
+        shadow-lg font-normal header_color`}>
         {items.map((subItem) => {
           return (subItem.items && subItem.items.length > 0)?(<SubMenu items={subItem?.items} title={subItem.title} side={'right'} />):(
             <NavLink

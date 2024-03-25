@@ -70,8 +70,24 @@
   background-color: rgb(209 213 219);
 }
 
+.contrast{
+  background-color:hsl(226.83deg 42.27% 19.02% / 40%);
+}
+
+.price_blue{
+  background-color: hsl(234.82deg 38.18% 32.59% / 100%);
+}
+
+.offer_red{
+  background-color: hsl(0deg 100% 35%);
+}
+
 .header_color{
-  background-color: hsl(35.67deg, 38.99%, 44%);
+  background-color: hsl(0deg 35.67% 38.99% / 44%);
+}
+
+.header_color{
+  background-color: hsl(0deg 35.67% 38.99% / 44%);
 }
 
 .my_gradient{

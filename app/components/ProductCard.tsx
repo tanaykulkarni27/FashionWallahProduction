@@ -76,7 +76,7 @@ var comparisonPrice = null;
             <Text
               as="label"
               size="fine"
-              className={`absolute top-0 left-0 text-right p-1 bg-red-700 text-white ${cardLabel === '' || !cardLabel ? 'hidden':''}`}
+              className={`absolute top-0 left-0 text-right p-1 offer_red text-white ${cardLabel === '' || !cardLabel ? 'hidden':''}`}
             >
               {'Upto 30% off'}
               {/* {cardLabel} */}
@@ -123,7 +123,7 @@ var comparisonPrice = null;
                 <Money
                   withoutTrailingZeros
                   data={price!}
-                  className="font-extralight bg-[#5d8bd7] mr-1 p-1"
+                  className="font-extralight price_blue mr-1 p-1"
                   // style={{fontFamily: 'Playfair Display'}}
                 />
                 {isDiscounted(price as MoneyV2, compareAtPrice as MoneyV2) && (
