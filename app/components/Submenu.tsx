@@ -24,7 +24,7 @@ function SubMenu({items, title,root=false, side = null,setmenuState}: SubMenuPro
   };
 
   return (
-    <div className={`relative min-w-[100px]`} 
+    <div className={`relative min-w-[100px] text-white`} 
         onMouseOver={handleMouseEnter}
         onMouseOut={handleMouseOut}>
  
@@ -32,7 +32,7 @@ function SubMenu({items, title,root=false, side = null,setmenuState}: SubMenuPro
         to="#"
         className=""
       >
-        <div className={`flex flex-row justify-between items-center text-contrast ${side != null && 'text-sm py-2 px-4 '} text-left w-full ${!root && 'hover:bg-[#c39898]'}`}>
+        <div className={`flex flex-row justify-between items-center text-white ${side != null && 'text-sm py-2 px-4 '} text-left w-full ${!root && 'hover:bg-[#c39898]'}`}>
           <span className=' text-center w-full'> {title} </span>
         </div>
       </ReactLink>
@@ -46,7 +46,7 @@ function SubMenu({items, title,root=false, side = null,setmenuState}: SubMenuPro
             <NavLink
               key={subItem.id}
               to={processURL(subItem.url,/\/collections\/[a-zA-Z0-9-]+/)}
-              className="block text-sm py-2 px-4 text-contrast text-left min-w-[100px] hover:bg-[#c39898]"
+              className="block text-sm py-2 px-4 text-left min-w-[100px] hover:bg-[#c39898]"
               style={activeLinkStyle}
             >
               {subItem.title}

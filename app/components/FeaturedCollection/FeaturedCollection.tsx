@@ -98,7 +98,7 @@ export default function FeaturedCollection({FeaturedCollection}: {
             enter="transition-opacity duration-1000"
             enterFrom={'opacity-0'}
             enterTo={'opacity-100'}
-            leave="transition-opacity duration-1000"
+            leave="transition-opacity duration-0"
             leaveFrom={'opacity-100'}
             leaveTo={'opacity-0'}
             className={'w-full z-0'}

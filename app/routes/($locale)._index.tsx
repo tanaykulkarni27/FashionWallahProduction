@@ -70,7 +70,7 @@ export async function loader({params, context}: LoaderFunctionArgs) {
     const COLLECTION_TYPES = []
     var sub_collection = await context.storefront.query(All_Collections,{
       variables:{MainType:'jhumkas OR Earrings OR studs OR bali OR earring'}});
-      COLLECTION_TYPES.push({title:'Earring',sub_collections:sub_collection.collections.edges});
+      COLLECTION_TYPES.push({title:'Earrings',sub_collections:sub_collection.collections.edges});
     sub_collection = await context.storefront.query(All_Collections,{
         variables:{MainType:'necklace OR Necklace'}});
         COLLECTION_TYPES.push({title:'Necklace',sub_collections:sub_collection.collections.edges});  

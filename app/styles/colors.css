@@ -70,6 +70,9 @@
   background-color: rgb(209 213 219);
 }
 
+.header_color{
+  background-color: hsl(35.67deg, 38.99%, 44%);
+}
 
 .my_gradient{
   /* background: linear-gradient(to bottom, #FEAC5E, #E7E9BB, #403B4A); */

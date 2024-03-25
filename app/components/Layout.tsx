@@ -300,7 +300,7 @@ function MobileHeader({
     <header
       role="banner"
       className={`text-contrast ${
-        scrolled ? 'backdrop-blur-md bg-white/30' : 'stone_gray'
+        scrolled ? 'backdrop-blur-md bg-white/30' : 'header_color'
       } sticky
       flex lg:hidden items-center h-nav z-40 top-0 justify-between w-full leading-none gap-4 md:px-8 z-50 px-3`}
     >
@@ -395,7 +395,7 @@ function DesktopHeader({
       role="banner"
       className={`navbar_element 
           text-contrast ${
-            (scrolled && !isMenuOpen)? 'backdrop-blur-md bg-white/30' : 'stone_gray'
+            (scrolled && !isMenuOpen)? 'backdrop-blur-md bg-white/30' : 'header_color'
           } 
           ${isHome && !scrolled ? 'bg-transparent':'sticky'}
           hidden h-nav lg:flex items-center transition duration-300 z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8 z-50 `}
@@ -405,7 +405,7 @@ function DesktopHeader({
           {/* {title} */}
           <img src={fwLogo} className="w-80" alt="" />
         </ReactLink>
-        <nav className="flex gap-6 font-bold">
+        <nav className="flex gap-6 font-bold text-white">
           {/* Top level menu items */}
           {(menu?.items || []).map((item) => {
             const hasSubMenu = item.items && item.items.length > 0;
