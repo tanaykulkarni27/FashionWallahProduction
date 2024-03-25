@@ -168,7 +168,7 @@ export default function Homepage() {
           <InfiniteMarquee
             items={TEST_RATING_DATA}
             direction="left"
-            speed="slow"
+            speed="fast"
           />
         </div>
       </div>

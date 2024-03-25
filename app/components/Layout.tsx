@@ -397,7 +397,7 @@ function DesktopHeader({
           text-contrast ${
             (scrolled && !isMenuOpen)? 'backdrop-blur-md bg-white/30' : 'header_color'
           } 
-          ${isHome && !scrolled ? 'bg-transparent':'sticky'}
+          sticky
           hidden h-nav lg:flex items-center transition duration-300 z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8 z-50 `}
     >
       <div className="flex items-center gap-12">

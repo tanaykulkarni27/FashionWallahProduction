@@ -23,7 +23,7 @@ export default function BannerCarousel({ Banner_Data }: CarouselProps) {
   };
 
   return (
-    <div className={`relative w-full flex flex-grow aspect-[800/1366]  md:aspect-[1366/700] ${Banner_Data[activeIndex].class}`}>
+    <div className={`relative w-full flex flex-grow aspect-[868/1366]  md:aspect-[1366/700] ${Banner_Data[activeIndex].class}`}>
       {Banner_Data.map((item, index) => {
         return (
           <Transition
@@ -38,7 +38,7 @@ export default function BannerCarousel({ Banner_Data }: CarouselProps) {
             leaveFrom="opacity-0"
             leaveTo="opacity-0"
           >
-            <div className={`m-0 w-full aspect-[800/1366] md:aspect-[1366/700] flex flex-row justify-center items-center ${item.class}`}>
+            <div className={`m-0 w-full aspect-[868/1366] md:aspect-[1366/700] flex flex-row justify-center items-center ${item.class}`}>
               <div className='relative'>
                 <div
                   className='rounded-2xl w-[90vw] aspect-[768/1366] md:aspect-[1366/768] absolute top-0 left-0 overflow-hidden'
