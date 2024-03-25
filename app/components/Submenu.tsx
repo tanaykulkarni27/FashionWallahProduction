@@ -23,14 +23,24 @@ function SubMenu({items, title,root=false, side = null,setmenuState}: SubMenuPro
     setmenuState(false);
   };
 
+  const [bgColor,setBgColor] = useState('#f1dab0')
+  useEffect(()=>{
+    if(window.location.href.includes('collections'))
+      setBgColor('#b09684');
+    else if(window.location.href.includes('products'))
+      setBgColor('#575249');
+    else
+      setBgColor('#f1dab0');
+  });
+
   return (
-    <div className={`relative min-w-[100px] text-white`} 
+    <div className={`relative min-w-[100px] text-white bg-[${bgColor}]`} 
         onMouseOver={handleMouseEnter}
         onMouseOut={handleMouseOut}>
  
       <ReactLink
         to="#"
-        className=""
+        className={` bg-[${bgColor}]`}
       >
         <div className={`flex flex-row justify-between items-center text-white ${side != null && 'text-sm py-2 px-4 '} text-left w-full ${!root && 'hover:bg-[#c39898]'}`}>
           <span className=' text-center w-full'> {title} </span>
@@ -40,13 +50,13 @@ function SubMenu({items, title,root=false, side = null,setmenuState}: SubMenuPro
         className={`
         ${isSubMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} transition duration-300 ease-in-out
         absolute ${side === 'right' ? 'top-0 left-full' : 'top-full left-0 right-0'}
-        shadow-lg font-normal header_color`}>
+        shadow-lg font-normal bg-[${bgColor}]`}>
         {items.map((subItem) => {
           return (subItem.items && subItem.items.length > 0)?(<SubMenu items={subItem?.items} title={subItem.title} side={'right'} />):(
             <NavLink
               key={subItem.id}
               to={processURL(subItem.url,/\/collections\/[a-zA-Z0-9-]+/)}
-              className="block text-sm py-2 px-4 text-left min-w-[100px] hover:bg-[#c39898]"
+              className={`block text-sm py-2 px-4 text-left min-w-[100px] hover:bg-[#c39898] bg-[${bgColor}]`}
               style={activeLinkStyle}
             >
               {subItem.title}

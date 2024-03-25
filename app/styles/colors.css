@@ -27,12 +27,15 @@
 }
 
 .trending_collection {
-  background: linear-gradient(
+  /* @apply h-full */
+  height: max-content;
+  background: rgba(176, 150, 132, 1);
+  /* background: linear-gradient(
     180deg,
-    rgba(176, 150, 132, 1) 1%,
-    rgba(122, 114, 95, 1) 80%,
+     1%,
+    rgba(122, 114, 95, 1) 100%,
     transparent
-  );
+  ); */
 }
 
 .product-page-style {

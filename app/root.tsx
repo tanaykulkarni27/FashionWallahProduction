@@ -5,6 +5,7 @@ import {
   type AppLoadContext,
   type SerializeFrom,
 } from '@shopify/remix-oxygen';
+import {useEffect, useState} from 'react';
 import {
   isRouteErrorResponse,
   Links,
@@ -167,6 +168,15 @@ export default function App() {
 
   useAnalytics(hasUserConsent);
 
+const [bgColor,setBgColor] = useState('#f1dab0')
+useEffect(()=>{
+  if(window.location.href.includes('collections'))
+    setBgColor('#b09684');
+  else if(window.location.href.includes('products'))
+    setBgColor('#575249');
+  else
+    setBgColor('#f1dab0');
+});
   return (
     <html lang={locale.language}>
       <head>
@@ -177,7 +187,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className={`bg-[${bgColor}]`} style={{backgroundColor:bgColor}}>
         <Layout
           key={`${locale.language}-${locale.country}`}
           layout={data.layout}

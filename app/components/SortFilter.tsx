@@ -45,7 +45,7 @@ export function SortFilter({
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div className="flex items-center justify-between w-full z-30">
+      <div className="flex items-start justify-between w-full z-30">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className={
@@ -264,7 +264,7 @@ function PriceRangeFilter({max, min}: {max?: number; min?: number}) {
           className="text-black"
           type="number"
           value={minPrice ?? ''}
-          placeholder={'$'}
+          placeholder={'₹'}
           onChange={onChangeMin}
         />
       </label>
@@ -275,7 +275,7 @@ function PriceRangeFilter({max, min}: {max?: number; min?: number}) {
           className="text-black"
           type="number"
           value={maxPrice ?? ''}
-          placeholder={'$'}
+          placeholder={'₹'}
           onChange={onChangeMax}
         />
       </label>
@@ -330,9 +330,42 @@ export default function SortMenu() {
   const [params] = useSearchParams();
   const location = useLocation();
   const activeItem = items.find((item) => item.key === params.get('sort'));
-
   return (
-    <Menu as="div" className="relative z-50">
+    <Disclosure key={'SortBy'} as="div" className="grid w-fit gap-2 text-left">
+      {({open}) => (
+        <>
+          <Disclosure.Button>
+            <div className="flex items-center">
+              <span className="">
+                <span className="px-2 font-medium">Sort by:</span>
+                <span>{(activeItem || items[0]).label}</span>
+              </span>
+              <IconCaret />
+            </div>
+          </Disclosure.Button>
+
+          <Disclosure.Panel className={'text-xl'}>
+            <div className="flex flex-col">
+              {items.map((item) => (
+                <Link
+                  className={`block text-sm pb-2 px-3 ${
+                    activeItem?.key === item.key ? 'font-bold' : 'font-normal'
+                  }`}
+                  to={getSortLink(item.key, params, location)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </Disclosure.Panel>
+        </>
+      )}
+    </Disclosure>
+  );
+}
+
+/*
+<Menu as="div" className="relative z-50">
       <Menu.Button className="flex items-center">
         <span className="px-2">
           <span className="px-2 font-medium">Sort by:</span>
@@ -361,5 +394,4 @@ export default function SortMenu() {
         ))}
       </Menu.Items>
     </Menu>
-  );
-}
+*/
