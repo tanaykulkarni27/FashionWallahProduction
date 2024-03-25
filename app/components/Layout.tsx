@@ -169,7 +169,6 @@ function MenuMobileNav({
   onClose: () => void;
 }) {
   const [show_sub_menu, set_sub_menu] = useState(menu?.items);
-  // console.log(menu);
   return (
     <nav
       className={`grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8 w-screen text-black overflow-y-scroll scrollbar-hide max-h-[70vh]`}
@@ -218,10 +217,10 @@ function MenuMobileNav({
               </Text>
             </ReactLink>
             <ReactLink
-              key={item.id}
-              to={item.to}
+              to={processURL(item.url,/\/collections\/[a-zA-Z0-9-]+/)}
               target={item.target}
               prefetch="intent"
+              onClick={onClose}
               className={({isActive}) => (isActive ? 'pb-1' : 'pb-1')}
             >
               <FaAngleRight className="rounded-full bg-[#d3d3d3] text-black hover:bg-slate-950 hover:text-white" />
