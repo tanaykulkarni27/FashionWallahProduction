@@ -86,10 +86,6 @@
   background-color: hsl(0deg 35.67% 38.99% / 44%);
 }
 
-.header_color{
-  background-color: hsl(0deg 35.67% 38.99% / 44%);
-}
-
 .my_gradient{
   /* background: linear-gradient(to bottom, #FEAC5E, #E7E9BB, #403B4A); */
   background: linear-gradient(to bottom, #FEAC5E, #C779D0 15%, #4BC0C8 );
