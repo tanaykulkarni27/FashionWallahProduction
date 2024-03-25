@@ -158,7 +158,7 @@ export default function Homepage() {
           </Await>
         </Suspense>
       )}
-      <div className="w-full h-[5vh] bg-gradient-to-b from-[#4BC0C8] to-white m-0"></div>
+      <div className="w-full h-[5vh] bg-gradient-to-b from-[#D3CCE3] to-white m-0"></div>
       <div className="trans_taupe pb-20">
         <ReviewsNRating
           count={[1407, 23123]}
